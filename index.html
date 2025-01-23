@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Jotter</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #f4f4f9;
+            overflow: hidden;
+            text-align: center; /* يعيد محاذاة النص إلى المنتصف */
+        }
+
+        .title {
+            font-size: 3rem;
+            font-weight: bold;
+            background: linear-gradient(90deg, red, orange, yellow, green, blue, purple);
+            background-size: 300%;
+            -webkit-background-clip: text;
+            color: transparent;
+            animation: gradient-animation 5s ease infinite;
+            text-shadow: 3px 3px 0 rgba(255, 255, 255, 0.4);
+            margin: 0;
+            z-index: 1;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            font-weight: normal;
+            color: transparent;
+            background: linear-gradient(90deg, #ff0080, #ff8c00, #ffe000, #8eff00, #00ffe0, #0080ff);
+            background-size: 300%;
+            -webkit-background-clip: text;
+            animation: gradient-animation 5s ease infinite;
+            text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8);
+            margin-top: 10px;
+            z-index: 1;
+        }
+
+        @keyframes gradient-animation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .social-links {
+            margin-top: 20px;
+            display: flex;
+            gap: 12px;
+            justify-content: center; /* لضمان محاذاة الروابط في المنتصف */
+        }
+
+        .social-link {
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 28px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            color: white;
+        }
+
+        .gameguardian { background-color: #800080; }
+        .iosgods { background-color: #007aff; }
+        .github { background-color: #333; }
+        .cv { background-color: #4caf50; }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            width: 90%;
+            margin-top: 40px;
+        }
+
+        .logo-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .logo-wrapper svg {
+            width: 80px;
+            height: 80px;
+        }
+
+        .platform-name {
+            margin-top: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            color: white; /* تغيير لون اسم المنصة إلى الأبيض */
+        }
+
+        .instagram-card { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+        .twitter-card { background-color: #000000; }
+        .tiktok-card { background: linear-gradient(45deg, #00f2ea, #ff0050); }
+        .telegram-card { background-color: #0088cc; }
+        .snapchat-card { background-color: #000000; }
+        .linkedin-card { background-color: #0077b5; }
+        .discord-card { background-color: #5865f2; }
+        .youtube-card { background-color: #ff0000; }
+    </style>
+</head>
+<body>
+    <div>
+        <h1 class="title">Job Jotter</h1>
+        <h2 class="subtitle">Mohmmad Hissyn Aon (Endup)</h2>
+        <div class="social-links">
+            <a href="https://gameguardian.net" target="_blank" class="social-link gameguardian">Game Guardian</a>
+            <a href="https://iosgods.com" target="_blank" class="social-link iosgods">iOSGods</a>
+            <a href="https://github.com" target="_blank" class="social-link github">GitHub</a>
+            <a href="cv.pdf" target="_blank" class="social-link cv">CV</a>
+        </div>
+    </div>
+
+    <!-- Social Media Cards Section -->
+    <div class="container">
+        <!-- Instagram Card -->
+        <div class="logo-card instagram-card">
+            <div class="logo-wrapper">
+                <svg viewBox="0 0 24 24" fill="white">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+            </div>
+            <div class="platform-name">Instagram</div>
+        </div>
+
+        <!-- Twitter/X Card -->
+        <div class="logo-card twitter-card">
+            <div class="logo-wrapper">
+                <svg viewBox="0 0 24 24" fill="white">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+            </div>
+            <div class="platform-name">X (Twitter)</div>
+        </div>
+
+        <!-- TikTok Card -->
+        <div class="logo-card tiktok-card">
+            <div class="logo-wrapper">
+                <svg viewBox="0 0 24 24" fill="white">
+                    <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+                </svg>
+            </div>
+            <div class="platform-name">TikTok</div>
+        </div>
+
+        <!-- Telegram Card -->
+        <div class="logo-card telegram-card">
+            <div class="logo-wrapper">
+                <svg viewBox="0 0 24 24" fill="white">
+                    <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                </svg>
+            </div>
+            <div class="platform-name">Telegram</div>
+        </div>
+
+        <!-- Snapchat Card -->
+        <div class="logo-card snapchat-card">
+            <div class="logo-wrapper">
+                <svg viewBox="0 0 24 24" fill="white">
+                    <path d="M12.206 1C9.72 1 7.687 3.105 7.687 5.681V7.39H7.651c-.577 0-1.88-.288-2.267-.744-.199-.24-.323-.394-.595-.394-.389 0-.911.314-.911.915 0 1.062 2.072 2.129 2.072 2.129-.157.397-3.315 8.085-9.95 8.085v.946C2.532 21.321 5.884 22 7.913 22c.889 0 1.384-.275 1.384-.275.157-.118.279-.24.279-.438 0-.16-.119-.359-.438-.438-.32-.079-.767-.159-1.007-.359-.239-.199-.199-.438-.159-.518.12-.278 1.007-.438 1.804-.518.799-.079 1.486-.079 2.293-.239 1.246-.239 1.166-1.872 1.166-2.152 0-.518.518-.996.916-.996.279 0 .677.119.677.518v1.714c0 .876.756 1.593 1.684 1.593.927 0 1.683-.717 1.683-1.593v-1.714c0-.399.398-.518.677-.518.398 0 .917.478.917.996 0 .28-.08 1.913 1.166 2.152.807.16 1.494.16 2.293.239.797.08 1.684.24 1.803.518.04.08.08.319-.159.518-.24.2-.687.28-1.007.359-.319.079-.438.278-.438.438 0 .198.122.32.279.438 0 0 .495.275 1.384.275 2.029 0 5.381-.679 5.381-.679v-.946c-6.635 0-9.793-7.688-9.949-8.085 0 0 2.072-1.067 2.072-2.129 0-.601-.522-.915-.911-.915-.272 0-.396.154-.595.394-.387.456-1.69.744-2.267.744h-.036V5.681C16.313 3.105 14.28 1 11.794 1h.412z"/>
+                </svg>
+            </div>
+            <div class="platform-name">Snapchat</div>
+        </div>
+
+        <!-- LinkedIn Card -->
+        <div class="logo-card linkedin-card">
+            <div class="logo-wrapper">
+                <svg viewBox="0 0 24 24" fill="white">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.851 0-2.26 1.446-2.26 2.945v5.661H10.121s.047-9.21 0-10.174h3.015v1.44c-.006.01-.014.023-.021.033h.021v-.033c.401-.616 1.118-1.507 2.713-1.507 1.977 0 3.449 1.285 3.449 4.053V20.452zM5.86 11.075c-1.159 0-2.093-.968-2.093-2.162 0-1.193.934-2.162 2.093-2.162 1.169 0 2.093.968 2.093 2.162 0 1.194-.924 2.162-2.093 2.162zm1.677 9.377h-3.355V8.27h3.355z"/>
+                </svg>
+            </div>
+            <div class="platform-name">LinkedIn</div>
+        </div>
+
+        <!-- Discord Card -->
+        <div class="logo-card discord-card">
+            <div class="logo-wrapper">
+                <svg viewBox="0 0 24 24" fill="white">
+                    <path d="M12 0c-6.627 0-12 4.5-12 10.034 0 4.414 2.81 8.163 6.687 9.49.485.117.662-.205.662-.454v-1.968C7.21 17.473 6.173 16.5 6.173 16.5c-.866-.6.064-.587.064-.587.959.064 1.48 1.03 1.48 1.03 1.147 1.933 3.017 1.37 3.74 1.05.12-.835.448-1.37.817-1.684-4.836-.545-9.916-2.339-9.916-10.076 0-2.229.633-4.362 1.733-6.15C6.786 1.748 9.085 2.45 9.085 2.45c-1.14 1.821.03 3.755.031 3.755 2.145.112 4.298 1.655 4.298 1.655-.011.045-.022.09-.034.134C14.14 6.6 14.715 5.53 13.73 4.6c.798.222 1.54.687 2.236 1.27C17.466 4.224 14.823 0 12 0z"/>
+                </svg>
+            </div>
+            <div class="platform-name">Discord</div>
+        </div>
+
+        <!-- YouTube Card -->
+        <div class="logo-card youtube-card">
+            <div class="logo-wrapper">
+                <svg viewBox="0 0 24 24" fill="white">
+                    <path d="M19.605 3.184C22.002 3.327 22.825 4.583 22.916 6.257c.098 1.634.095 5.285.095 5.285s0 3.651-.09 5.285c-.09 1.674-.914 2.93-3.302 3.072-1.716.147-8.396.147-8.396.147s-6.691 0-8.389-.147C2.248 16.529 1.429 15.27 1.338 13.628c-.098-1.634-.095-5.285-.095-5.285s0-3.651.095-5.285C1.429 4.583 2.251 3.327 4.703 3.184c1.847-.142 8.66-.142 8.66-.142s6.587 0 8.252.143zm-10.379 9.253V8.827l6.057 2.202-6.057 2.408z"/>
+                </svg>
+            </div>
+            <div class="platform-name">YouTube</div>
+        </div>
+    </div>
+</body>
+</html>
