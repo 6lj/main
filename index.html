@@ -2,59 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Responsive Social Links</title>
     <style>
-        /* Add media query for mobile devices */
-        @media (max-width: 768px) {
-            body {
-                font-size: 14px;
-                padding: 20px; /* Add padding for better spacing */
-            }
-
-            .title {
-                font-size: 2rem;
-            }
-
-            .subtitle {
-                font-size: 1.2rem;
-            }
-
-            .social-links {
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            .social-link {
-                font-size: 0.9rem; /* Slightly larger for readability */
-                padding: 10px 16px;
-            }
-
-            .container {
-                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* Smaller cards for better fit */
-                gap: 15px;
-            }
-
-            .logo-card {
-                padding: 15px; /* Reduced padding */
-                border-radius: 12px;
-            }
-
-            .logo-wrapper {
-                width: 50px; /* Smaller logos */
-                height: 50px;
-            }
-
-            .snapchat-logo {
-                width: 80px;
-                height: 80px;
-            }
-
-            .platform-name {
-                font-size: 0.9rem; /* Reduced font size */
-            }
-        }
-
+        /* General Styles */
         body {
             font-family: 'Inter', sans-serif;
             margin: 0;
@@ -65,8 +16,9 @@
             flex-direction: column;
             height: 100vh;
             background-color: #f4f4f9;
-            overflow: hidden;
+            overflow-x: hidden;
             text-align: center;
+            -webkit-text-size-adjust: 100%;
         }
 
         .title {
@@ -76,6 +28,7 @@
             background-size: 300%;
             -webkit-background-clip: text;
             color: transparent;
+            -webkit-animation: gradient-animation 5s ease infinite;
             animation: gradient-animation 5s ease infinite;
             text-shadow: 3px 3px 0 rgba(255, 255, 255, 0.4);
             margin: 0;
@@ -89,6 +42,7 @@
             background: linear-gradient(90deg, #ff0080, #ff8c00, #ffe000, #8eff00, #00ffe0, #0080ff);
             background-size: 300%;
             -webkit-background-clip: text;
+            -webkit-animation: gradient-animation 5s ease infinite;
             animation: gradient-animation 5s ease infinite;
             text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8);
             margin-top: 10px;
@@ -101,11 +55,18 @@
             100% { background-position: 0% 50%; }
         }
 
+        @-webkit-keyframes gradient-animation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
         .social-links {
             margin-top: 20px;
             display: flex;
             gap: 12px;
             justify-content: center;
+            flex-wrap: wrap;
         }
 
         .social-link {
@@ -121,15 +82,6 @@
         .iosgods { background-color: #007aff; }
         .github { background-color: #333; }
         .cv { background-color: #4caf50; }
-        .instagram { background-color: #8a3ab9; }
-        .x { background-color: #000000; }
-        .tiktok { background-color: #000000; }
-        .telegram { background-color: #0088cc; }
-        .snapchat { background-color: #ffff00; }
-        .linkedin { background-color: #0077b5; }
-        .discord { background-color: #5865f2; }
-        .youtube { background-color: #ff0000; }
-        .facebook { background-color: #1877f2; }
 
         .container {
             display: grid;
@@ -150,17 +102,21 @@
             justify-content: center;
             transition: transform 0.3s ease;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
-            position: relative;
-            overflow: hidden;
         }
 
         .logo-card:hover {
             transform: translateY(-5px);
         }
 
-        .logo-wrapper img { width: 80px; height: 80px; }
+        .logo-wrapper img {
+            width: 80px;
+            height: 80px;
+        }
 
-        .snapchat-logo { width: 120px; height: 120px; }
+        .snapchat-logo {
+            width: 120px;
+            height: 120px;
+        }
 
         .platform-name {
             margin-top: 12px;
@@ -177,12 +133,55 @@
         .linkedin-card { background-color: #0077b5; }
         .discord-card { background-color: #5865f2; }
         .youtube-card { background-color: #ff0000; }
-        .facebook-card { background-color: #1877f2; }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .social-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .social-link {
+                font-size: 0.9rem;
+                padding: 10px 16px;
+            }
+
+            .container {
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                gap: 15px;
+            }
+
+            .logo-card {
+                padding: 15px;
+            }
+
+            .logo-wrapper {
+                width: 50px;
+                height: 50px;
+            }
+
+            .snapchat-logo {
+                width: 80px;
+                height: 80px;
+            }
+
+            .platform-name {
+                font-size: 0.9rem;
+            }
+        }
     </style>
 </head>
 <body>
     <div>
-        <h1 class="title"></h1>
+        <h1 class="title">Welcome!</h1>
         <h2 class="subtitle">Mohmmad Hissyn Aon (Endup)</h2>
         <div class="social-links">
             <a href="https://gameguardian.net" target="_blank" class="social-link gameguardian">Game Guardian</a>
@@ -191,56 +190,8 @@
             <a href="cv.pdf" target="_blank" class="social-link cv">CV</a>
         </div>
     </div>
-
     <div class="container">
-        <div class="logo-card instagram-card">
-            <div class="logo-wrapper">
-                <img src="https://img.icons8.com/m_outlined/512/FFFFFF/instagram-new.png" alt="Instagram Logo">
-            </div>
-            <div class="platform-name">Instagram</div>
-        </div>
-        <div class="logo-card x-card">
-            <div class="logo-wrapper">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/X_logo_2023_%28white%29.png/800px-X_logo_2023_%28white%29.png" alt="X Logo">
-            </div>
-            <div class="platform-name">X (Twitter)</div>
-        </div>
-        <div class="logo-card tiktok-card">
-            <div class="logo-wrapper">
-                <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/tiktok-white-icon.png" alt="TikTok Logo">
-            </div>
-            <div class="platform-name">TikTok</div>
-        </div>
-        <div class="logo-card telegram-card">
-            <div class="logo-wrapper">
-                <img src="https://img.icons8.com/m_outlined/512/FFFFFF/telegram-app.png" alt="Telegram Logo">
-            </div>
-            <div class="platform-name">Telegram</div>
-        </div>
-        <div class="logo-card snapchat-card">
-            <div class="logo-wrapper">
-                <img class="snapchat-logo" src="https://i.ibb.co/gv5zVKh/sm-5af2d4ca1b4fa-removebg-preview.png" alt="Snapchat Logo">
-            </div>
-            <div class="platform-name">Snapchat</div>
-        </div>
-        <div class="logo-card linkedin-card">
-            <div class="logo-wrapper">
-                <img src="https://i.ibb.co/KhQfG02/images-removebg-preview.png" alt="LinkedIn Logo">
-            </div>
-            <div class="platform-name">LinkedIn</div>
-        </div>
-        <div class="logo-card discord-card">
-            <div class="logo-wrapper">
-                <img src="https://img.icons8.com/ios11/512/FFFFFF/discord-logo.png" alt="Discord Logo">
-            </div>
-            <div class="platform-name">Discord</div>
-        </div>
-        <div class="logo-card youtube-card">
-            <div class="logo-wrapper">
-                <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/youtube-app-white-icon.png" alt="YouTube Logo">
-            </div>
-            <div class="platform-name">YouTube</div>
-        </div>
+        <!-- Add your platform cards here -->
     </div>
 </body>
 </html>
