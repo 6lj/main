@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +6,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     <style>
+        /* Add media query for mobile devices */
+        @media (max-width: 768px) {
+            body {
+                font-size: 14px;
+            }
+
+            .title {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .social-links {
+                margin-top: 10px;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .social-link {
+                padding: 8px 12px;
+                font-size: 0.8rem;
+            }
+
+            .container {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                gap: 10px;
+            }
+
+            .logo-card {
+                padding: 20px;
+                border-radius: 10px;
+            }
+
+            .logo-wrapper {
+                width: 60px;
+                height: 60px;
+            }
+
+            .platform-name {
+                font-size: 1rem;
+                margin-top: 5px;
+            }
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             margin: 0;
@@ -16,7 +64,7 @@
             height: 100vh;
             background-color: #f4f4f9;
             overflow: hidden;
-            text-align: center; /* يعيد محاذاة النص إلى المنتصف */
+            text-align: center;
         }
 
         .title {
@@ -55,7 +103,7 @@
             margin-top: 20px;
             display: flex;
             gap: 12px;
-            justify-content: center; /* لضمان محاذاة الروابط في المنتصف */
+            justify-content: center;
         }
 
         .social-link {
