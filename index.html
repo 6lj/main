@@ -1,15 +1,15 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Responsive Social Links</title>
     <style>
         /* Add media query for mobile devices */
         @media (max-width: 768px) {
             body {
                 font-size: 14px;
+                padding: 20px; /* Add padding for better spacing */
             }
 
             .title {
@@ -21,35 +21,37 @@
             }
 
             .social-links {
-                margin-top: 10px;
-                display: flex;
                 flex-direction: column;
                 gap: 10px;
             }
 
             .social-link {
-                padding: 8px 12px;
-                font-size: 0.8rem;
+                font-size: 0.9rem; /* Slightly larger for readability */
+                padding: 10px 16px;
             }
 
             .container {
-                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-                gap: 10px;
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* Smaller cards for better fit */
+                gap: 15px;
             }
 
             .logo-card {
-                padding: 20px;
-                border-radius: 10px;
+                padding: 15px; /* Reduced padding */
+                border-radius: 12px;
             }
 
             .logo-wrapper {
-                width: 60px;
-                height: 60px;
+                width: 50px; /* Smaller logos */
+                height: 50px;
+            }
+
+            .snapchat-logo {
+                width: 80px;
+                height: 80px;
             }
 
             .platform-name {
-                font-size: 1rem;
-                margin-top: 5px;
+                font-size: 0.9rem; /* Reduced font size */
             }
         }
 
