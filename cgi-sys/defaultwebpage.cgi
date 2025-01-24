@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# Print HTTP header for redirection
-print("Status: 302 Found")  # HTTP status code for redirection
-print("Location: https://q5.qa/index.html")  # Redirect URL
-print()  # Blank line to end the headers
+# طباعة ترويسة HTTP لإعادة التوجيه
+print("Content-Type: text/html")
+print("Location: /index.html")  # إعادة التوجيه إلى المسار /index.html
+print()  # خط فارغ لإنهاء الترويسة
