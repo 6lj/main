@@ -10,17 +10,16 @@
             -webkit-text-size-adjust: 100%; /* Prevent text scaling on iOS */
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            overflow-x: hidden; /* Prevent horizontal scrolling */
-            font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-direction: column;
-            height: 100vh;
+            min-height: 100vh; /* Use min-height for proper height calculation */
             background-color: #f4f4f9;
             text-align: center;
+            overflow: auto; /* Ensure scrollability */
         }
 
         .title {
