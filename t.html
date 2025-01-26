@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TV Channels</title>
+    <title>قنوات التلفزيون</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://vjs.zencdn.net/7.2.3/video-js.css" rel="stylesheet" />
     <style>
@@ -11,7 +11,7 @@
         .floating-button {
             position: fixed;
             bottom: 20px;
-            right: 20px;
+            left: 20px; /* تغيير الجهة إلى اليسار للغة العربية */
             width: 50px;
             height: 50px;
             background-color: white;
@@ -23,39 +23,128 @@
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
             border: 1px solid #ddd;
         }
-        /* Video player container adjusted to top */
+        /* ضبط حاوية الفيديو لتكون في الأعلى */
         #video-container {
             width: 100%;
-            max-width: 800px; /* Adjust maximum size for larger screens */
+            max-width: 800px; /* تعديل الحجم الأقصى للشاشات الأكبر */
             margin: 20px auto;
             aspect-ratio: 16 / 9;
         }
-        /* Media queries for smaller screens */
+        /* استعلامات الوسائط للأجهزة ذات الشاشات الصغيرة */
         @media (max-width: 768px) {
             .floating-button {
                 width: 40px;
                 height: 40px;
                 bottom: 15px;
-                right: 15px;
+                left: 15px;
             }
-            /* Adjusting video container for mobile devices */
+            /* ضبط حاوية الفيديو للأجهزة المحمولة */
             #video-container {
                 width: 90%;
-                max-width: 320px; /* Smaller size on mobile */
+                max-width: 320px;
                 height: 180px;
-                margin-top: 10px; /* Reduced margin for mobile view */
+                margin-top: 10px;
             }
-            /* Stack the categories and channels on top of each other */
+            /* ترتيب الفئات والقنوات فوق بعضها البعض */
             #categories, #channels {
                 width: 100%;
-                max-width: none; /* Remove fixed width */
+                max-width: none;
             }
+        }
+
+        /* تخصيص زر "لم يعمل معي؟" */
+        #support-button {
+            background-color: white;
+            color: black;
+            border: 1px solid black;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #support-options {
+            display: none;
+            gap: 10px;
+        }
+
+        .support-option {
+            background-color: white;
+            color: black;
+            padding: 8px 16px;
+            border: 1px solid black;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* تخصيص الخطوات لتكون أصغر */
+        #iphone-steps ol {
+            font-size: 14px;
+        }
+
+        #iphone-steps img {
+            max-width: 120px;
+            margin-top: 10px;
+        }
+
+        /* وضع الخطوات في المنتصف */
+        #iphone-steps {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* زر "فهمت" لإخفاء الخطوات */
+        #understood-button {
+            background-color: white;
+            color: black;
+            border: 1px solid black;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        /* تخصيص نص العمل من قبل */
+        #footer {
+            background-color: #f3f4f6;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        /* تخصيص نموذج إدخال الكود */
+        #code-section {
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+        }
+
+        #code-result {
+            display: none;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        /* قيم الإعلان */
+        #advertisement {
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        /* تخصيص لون الحافة عندما يكون الكود صحيحًا */
+        .border-green-500 {
+            border-color: #34D399; /* لون أخضر */
         }
     </style>
 </head>
 <body class="flex h-screen relative flex-col">
 
-    <!-- Video Player -->
+    <!-- نص صاحب العمل -->
+    <div id="footer">
+        هذا العمل صنع من قبل ENDUP
+    </div>
+
+    <!-- مشغل الفيديو -->
     <div id="video-container" class="flex-1 p-4 flex items-center justify-center hidden">
         <video
             id="hls-example"
@@ -68,46 +157,192 @@
         </video>
     </div>
 
-    <!-- Categories Sidebar -->
+    <!-- الشريط الجانبي للفئات -->
     <div id="categories" class="w-64 md:w-1/4 bg-gray-100 p-4 overflow-y-auto">
-        <h2 class="text-xl font-bold mb-4">Categories</h2>
+        <h2 class="text-xl font-bold mb-4">الفئات</h2>
         <div onclick="selectCategory('sports')" class="category-item p-2 mb-2 cursor-pointer hover:bg-gray-200">
-            Sports
+            رياضة
         </div>
     </div>
 
-    <!-- Channels Sidebar -->
-    <div id="channels" class="w-64 md:w-1/4 bg-white p-4 border-r overflow-y-auto">
+    <!-- الشريط الجانبي للقنوات -->
+    <div id="channels" class="w-64 md:w-1/4 bg-white p-4 border-r overflow-y-auto hidden">
         <h3 id="category-title" class="text-lg font-semibold mb-4"></h3>
         <div id="channel-list"></div>
     </div>
 
-    <!-- Floating Button -->
+    <!-- الزر العائم -->
     <div id="back-button" class="floating-button" onclick="handleBack()">
-        <img src="https://cdn-icons-png.flaticon.com/512/93/93634.png" alt="Menu" class="w-6 h-6">
+        <img src="https://cdn-icons-png.flaticon.com/512/93/93634.png" alt="قائمة" class="w-6 h-6">
     </div>
+
+    <!-- خيار "لم يعمل معي؟" -->
+    <div id="support-section" class="w-full p-4 text-center mt-auto">
+        <button id="support-button" onclick="toggleSupportOptions()">لم يعمل معي؟</button>
+
+        <!-- الخيارات الثلاثة عند الضغط على "لم يعمل معي؟" -->
+        <div id="support-options" class="flex justify-center gap-4 mt-4">
+            <button class="support-option" onclick="handleSupport('iphone')">آيفون / آيباد</button>
+            <button class="support-option" onclick="handleSupport('android')">أندرويد / جالكسي</button>
+            <button class="support-option" onclick="handleSupport('tv')">تلفزيون</button>
+        </div>
+    </div>
+
+    <!-- الخطوات الخاصة بـ آيفون -->
+    <div id="iphone-steps" class="hidden">
+        <h3 class="text-xl font-semibold mb-4">خطوات آيفون / آيباد</h3>
+        <ol class="list-decimal pl-8">
+            <li>اذهب إلى المتجر وابحث عن <a href="https://apps.apple.com/us/app/alook-browser-8x-speed/id1261944766" target="_blank" class="text-blue-600">Alook</a></li>
+            <img src="https://i.ibb.co/4ZYPJy1/975-CE5-E9-75-E3-42-BB-823-F-7333-F3-AC7380.jpg" alt="Alook Search" class="w-1/3 mt-2 mb-4">
+            
+            <li>قم بتحميل تطبيق <strong>Alook</strong></li>
+            <img src="https://i.ibb.co/k3yLq1c/7-A6-B75-A6-9-B77-4304-9-F22-04-A2-F0-AD3-AE0.jpg" alt="Download Alook" class="w-1/3 mt-2 mb-4">
+            
+            <li>افتح التطبيق واذهب إلى <strong>Alook</strong></li>
+            <img src="https://i.ibb.co/HXWpn2r/4574-C54-C-999-F-430-E-94-B5-0808-E2-C3-DA02.jpg" alt="Alook App" class="w-1/3 mt-2 mb-4">
+            
+            <li>في الأسفل، اكتب <strong>q5.qa/t</strong></li>
+            <img src="https://i.ibb.co/rcD015k/F88-EF642-485-E-45-A8-8-BB6-B47-B47-A9-B6-F2.jpg" alt="Enter q5.qa/t" class="w-1/3 mt-2 mb-4">
+            
+            <li>استمتع!</li>
+        </ol>
+
+        <!-- زر "فهمت" لإخفاء الخطوات -->
+        <button id="understood-button" onclick="hideSteps()">فهمت</button>
+    </div>
+
+    <!-- نموذج إدخال الكود -->
+    <div id="code-section">
+        <input type="text" id="code-input" placeholder="أدخل الكود" class="border p-2" />
+        <button onclick="verifyCode()" class="bg-white text-black border border-black p-2 rounded">تحقق</button>
+        <div id="code-result">خذ الكود من الرقم 0570876887 (قيمة الكود: 20 ريال في السنة).</div>
+    </div>
+
+    <div id="advertisement">بواسطة ENDUP</div>
 
     <script src="https://vjs.zencdn.net/7.2.3/video.js"></script>
     <script src="https://vjs.zencdn.net/ie8/ie8-version/videojs-ie8.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.14.1/videojs-contrib-hls.js"></script>
     <script>
-        // Data for channels
+        // بيانات القنوات
         const channelData = {
             sports: [
                 {
-                    id: 'bein-hd',
-                    name: 'BeIN Sports HD',
+                    id: 'bein-1-hd',
+                    name: 'بي إن سبورت 1 HD',
                     logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Bein_sport_logo.png/2560px-Bein_sport_logo.png',
                     streamUrl: 'https://xyzdddd.mizhls.ru/lb/premium91/index.m3u8'
+                },
+                {
+                    id: 'bein-2-hd',
+                    name: 'بي إن سبورت 2 HD',
+                    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Bein_sport_logo.png/2560px-Bein_sport_logo.png',
+                    streamUrl: 'https://xyzdddd.mizhls.ru/lb/premium92/index.m3u8'
+                },
+                {
+                    id: 'bein-3-hd',
+                    name: 'بي إن سبورت 3 HD',
+                    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Bein_sport_logo.png/2560px-Bein_sport_logo.png',
+                    streamUrl: 'https://xyzdddd.mizhls.ru/lb/premium93/index.m3u8'
+                },
+                {
+                    id: 'bein-4-hd',
+                    name: 'بي إن سبورت 4 HD',
+                    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Bein_sport_logo.png/2560px-Bein_sport_logo.png',
+                    streamUrl: 'https://xyzdddd.mizhls.ru/lb/premium94/index.m3u8'
+                },
+                {
+                    id: 'bein-5-hd',
+                    name: 'بي إن سبورت 5 HD',
+                    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Bein_sport_logo.png/2560px-Bein_sport_logo.png',
+                    streamUrl: 'https://xyzdddd.mizhls.ru/lb/premium95/index.m3u8'
+                },
+                {
+                    id: 'bein-6-hd',
+                    name: 'بي إن سبورت 6 HD',
+                    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Bein_sport_logo.png/2560px-Bein_sport_logo.png',
+                    streamUrl: 'https://xyzdddd.mizhls.ru/lb/premium96/index.m3u8'
+                },
+                {
+                    id: 'bein-7-hd',
+                    name: 'بي إن سبورت 7 HD',
+                    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Bein_sport_logo.png/2560px-Bein_sport_logo.png',
+                    streamUrl: 'https://xyzdddd.mizhls.ru/lb/premium97/index.m3u8'
+                },
+                {
+                    id: 'bein-8-hd',
+                    name: 'بي إن سبورت 8 HD',
+                    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Bein_sport_logo.png/2560px-Bein_sport_logo.png',
+                    streamUrl: 'https://xyzdddd.mizhls.ru/lb/premium98/index.m3u8'
+                },
+                {
+                    id: 'bein-9-hd',
+                    name: 'بي إن سبورت 9 HD',
+                    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Bein_sport_logo.png/2560px-Bein_sport_logo.png',
+                    streamUrl: 'https://xyzdddd.mizhls.ru/lb/premium99/index.m3u8'
+                },
+                {
+                    id: 'ssc-1-hd',
+                    name: 'SSC 1 HD',
+                    logo: 'https://news.elsob7.com/wp-content/uploads/2024/10/IMG_1842.jpeg',
+                    streamUrl: 'https://xyzdddd.mizhls.ru/lb/premium614/index.m3u8'
+                },
+                {
+                    id: 'ssc-2-hd',
+                    name: 'SSC 2 HD',
+                    logo: 'https://news.elsob7.com/wp-content/uploads/2024/10/IMG_1842.jpeg',
+                    streamUrl: 'https://xyzdddd.mizhls.ru/lb/premium615/index.m3u8'
+                },
+                {
+                    id: 'ssc-3-hd',
+                    name: 'SSC 3 HD',
+                    logo: 'https://news.elsob7.com/wp-content/uploads/2024/10/IMG_1842.jpeg',
+                    streamUrl: 'https://xyzdddd.mizhls.ru/lb/premium616/index.m3u8'
+                },
+                {
+                    id: 'ssc-4-hd',
+                    name: 'SSC 4 HD',
+                    logo: 'https://news.elsob7.com/wp-content/uploads/2024/10/IMG_1842.jpeg',
+                    streamUrl: 'https://xyzdddd.mizhls.ru/lb/premium617/index.m3u8'
+                },
+                {
+                    id: 'ssc-5-hd',
+                    name: 'SSC 5 HD',
+                    logo: 'https://news.elsob7.com/wp-content/uploads/2024/10/IMG_1842.jpeg',
+                    streamUrl: 'https://xyzdddd.mizhls.ru/lb/premium618/index.m3u8'
+                },
+                {
+                    id: 'ssc-extra-1-hd',
+                    name: 'SSC Extra 1 HD',
+                    logo: 'https://news.elsob7.com/wp-content/uploads/2024/10/IMG_1842.jpeg',
+                    streamUrl: 'https://xyzdddd.mizhls.ru/lb/premium619/index.m3u8'
+                },
+                {
+                    id: 'ssc-extra-2-hd',
+                    name: 'SSC Extra 2 HD',
+                    logo: 'https://news.elsob7.com/wp-content/uploads/2024/10/IMG_1842.jpeg',
+                    streamUrl: 'https://xyzdddd.mizhls.ru/lb/premium620/index.m3u8'
+                },
+                {
+                    id: 'ssc-extra-3-hd',
+                    name: 'SSC Extra 3 HD',
+                    logo: 'https://news.elsob7.com/wp-content/uploads/2024/10/IMG_1842.jpeg',
+                    streamUrl: 'https://xyzdddd.mizhls.ru/lb/premium621/index.m3u8'
                 }
             ]
         };
 
         let player = null;
-        let currentView = 'categories'; // Tracks current view: 'categories', 'channels', or 'player'
+        let currentView = 'categories'; // لتتبع العرض الحالي: 'الفئات'، 'القنوات'، أو 'مشغل الفيديو'
+        const correctCode = "aon"; // الكود الصحيح
 
-        // Select Category (display channels)
+        // تحديد الفئة (عرض القنوات)
         function selectCategory(categoryId) {
+            if (!isCodeVerified()) {
+                alert('يرجى التحقق من الكود أولاً.'); // رسالة التحذير
+                return;
+            }
+
             const categoriesDiv = document.getElementById('categories');
             const channelsDiv = document.getElementById('channels');
             const channelList = document.getElementById('channel-list');
@@ -123,7 +358,7 @@
             channelList.innerHTML = '';
             channelData[categoryId].forEach(channel => {
                 const channelEl = document.createElement('div');
-                channelEl.innerHTML = `  
+                channelEl.innerHTML = `
                     <div class="flex items-center p-2 mb-2 cursor-pointer hover:bg-gray-100"
                          onclick="playChannel('${channel.streamUrl}', '${channel.name}')">
                         <img src="${channel.logo}" alt="${channel.name}" 
@@ -137,8 +372,18 @@
             currentView = 'channels';
         }
 
-        // Play selected channel
+        // التحقق من الكود
+        function isCodeVerified() {
+            return document.getElementById('code-input').value.trim() === correctCode; // تحقق إذا كان الكود المدخل هو "aon"
+        }
+
+        // تشغيل القناة المحددة
         function playChannel(streamUrl, channelName) {
+            if (!isCodeVerified()) {
+                alert('يرجى التحقق من الكود أولاً.'); // رسالة التحذير
+                return;
+            }
+
             const videoContainer = document.getElementById('video-container');
             const streamSource = document.getElementById('stream-source');
 
@@ -157,26 +402,63 @@
 
             player.play();
 
-            // Hide channels after playing
+            // إخفاء القنوات بعد التشغيل
             document.getElementById('channels').classList.add('hidden');
 
             currentView = 'player';
         }
 
-        // Handle Back Button Logic
-        function handleBack() {
-            const categoriesDiv = document.getElementById('categories');
-            const videoContainer = document.getElementById('video-container');
-            const channelsDiv = document.getElementById('channels');
+        // التعامل مع الضغط على "لم يعمل معي؟"
+        function toggleSupportOptions() {
+            const supportOptions = document.getElementById('support-options');
+            supportOptions.style.display = supportOptions.style.display === 'flex' ? 'none' : 'flex';
+        }
 
-            if (currentView === 'player') {
-                categoriesDiv.classList.remove('hidden'); // Show categories again
-                videoContainer.classList.add('hidden'); // Hide video player
+        // التعامل مع الضغط على أحد الخيارات
+        function handleSupport(platform) {
+            const iphoneSteps = document.getElementById('iphone-steps');
+            
+            if (platform === 'iphone') {
+                iphoneSteps.classList.remove('hidden');
+            }
+        }
+
+        // إخفاء الخطوات
+        function hideSteps() {
+            const iphoneSteps = document.getElementById('iphone-steps');
+            iphoneSteps.classList.add('hidden');
+        }
+
+        // تعديل دالة العودة
+        function handleBack() {
+            if (currentView === 'channels') {
+                // العودة إلى الفئات
+                document.getElementById('categories').classList.remove('hidden');
+                document.getElementById('channels').classList.add('hidden');
                 currentView = 'categories';
-            } else if (currentView === 'channels') {
-                categoriesDiv.classList.remove('hidden'); // Show categories again
-                channelsDiv.classList.add('hidden'); // Hide channels list
-                currentView = 'categories';
+            } else if (currentView === 'player') {
+                // العودة إلى القنوات
+                document.getElementById('channels').classList.remove('hidden');
+                document.getElementById('video-container').classList.add('hidden');
+                currentView = 'channels';
+            }
+        }
+
+        // دالة تحقق الكود
+        function verifyCode() {
+            const codeInput = document.getElementById('code-input');
+            const codeValue = codeInput.value.trim();
+            if (codeValue === correctCode) {
+                codeInput.classList.add('border-green-500'); // إضافة فصل CSS لتلوين الحافة
+                document.getElementById('code-result').style.display = 'none'; // إخفاء نتيجة الكود
+                // لا حاجة لإظهار رسالة.
+            } else {
+                codeInput.classList.remove('border-green-500'); // إزالة اللون الأخضر إذا كان الكود غير صحيح
+                alert('كود غير صحيح، يرجى المحاولة مرة أخرى. خذ الكود من الرقم 0570876887 (قيمة الكود: 20 ريال في السنة).');
+                document.getElementById('code-result').style.display = 'block'; // إظهار الرسالة
+                document.getElementById('video-container').classList.add('hidden');
+                document.getElementById('channels').classList.add('hidden');
+                document.getElementById('categories').classList.remove('hidden');
             }
         }
     </script>
