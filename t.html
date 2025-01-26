@@ -26,9 +26,10 @@
         /* Video player container adjusted to top */
         #video-container {
             width: 100%;
-            max-width: 800px; /* Adjust maximum size for larger screens */
+            max-width: 800px; /* Max size for larger screens */
             margin: 20px auto;
             aspect-ratio: 16 / 9;
+            display: none; /* Initially hidden */
         }
         /* Media queries for smaller screens */
         @media (max-width: 768px) {
@@ -42,18 +43,9 @@
             #video-container {
                 width: 90%;
                 max-width: 320px; /* Smaller size on mobile */
-                height: 180px;
+                height: auto; /* Responsive height */
                 margin-top: 10px; /* Reduced margin for mobile view */
-            }
-            #categories, #channels {
-                width: 100%; /* Make the categories and channels full width on mobile */
-                padding: 10px;
-            }
-        }
-        /* Hide the categories when in mobile view */
-        @media (max-width: 480px) {
-            #categories {
-                display: none; /* Hide categories when in mobile view */
+                display: block; /* Show in mobile */
             }
         }
     </style>
@@ -109,11 +101,10 @@
         };
 
         let player = null;
-        let currentView = 'categories'; // Tracks current view: 'categories', 'channels', or 'player'
+        let currentView = 'categories';
 
         // Select Category (display channels)
         function selectCategory(categoryId) {
-            const categoriesDiv = document.getElementById('categories');
             const channelsDiv = document.getElementById('channels');
             const channelList = document.getElementById('channel-list');
             const categoryTitle = document.getElementById('category-title');
@@ -121,7 +112,6 @@
             document.querySelectorAll('.category-item').forEach(el => el.classList.remove('channel-active'));
             event.currentTarget.classList.add('channel-active');
 
-            categoriesDiv.classList.add('hidden');
             channelsDiv.classList.remove('hidden');
             categoryTitle.textContent = categoryId.charAt(0).toUpperCase() + categoryId.slice(1);
 
@@ -161,10 +151,7 @@
             }
 
             player.play();
-
-            // Hide channels after playing
             document.getElementById('channels').classList.add('hidden');
-
             currentView = 'player';
         }
 
@@ -175,12 +162,12 @@
             const channelsDiv = document.getElementById('channels');
 
             if (currentView === 'player') {
-                categoriesDiv.classList.remove('hidden'); // Show categories again
-                videoContainer.classList.add('hidden'); // Hide video player
+                categoriesDiv.classList.remove('hidden');
+                videoContainer.classList.add('hidden');
                 currentView = 'categories';
             } else if (currentView === 'channels') {
-                categoriesDiv.classList.remove('hidden'); // Show categories again
-                channelsDiv.classList.add('hidden'); // Hide channels list
+                channelsDiv.classList.add('hidden');
+                categoriesDiv.classList.remove('hidden');
                 currentView = 'categories';
             }
         }
