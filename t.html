@@ -21,38 +21,38 @@
                 width: 25%;
             }
         }
+        .video-container {
+            width: 100%;
+            max-height: 90vh;
+            height: auto;
+        }
     </style>
 </head>
 <body class="flex h-screen">
-
     <div id="categories" class="w-64 md:w-1/4 bg-gray-100 p-4 overflow-y-auto">
         <h2 class="text-xl font-bold mb-4">Categories</h2>
         <div onclick="selectCategory('sports')" class="category-item p-2 mb-2 cursor-pointer hover:bg-gray-200">
             Sports
         </div>
     </div>
-
     <div id="channels" class="w-64 md:w-1/4 bg-white p-4 border-r overflow-y-auto hidden">
         <h3 id="category-title" class="text-lg font-semibold mb-4"></h3>
         <div id="channel-list"></div>
     </div>
-
     <div id="video-container" class="flex-1 p-4 flex items-center justify-center hidden">
         <video
             id="hls-example"
-            class="video-js vjs-default-skin w-full max-w-4xl"
-            width="400"
-            height="300"
+            class="video-js vjs-default-skin video-container"
             controls
+            preload="auto"
+            playsinline
         >
             <source id="stream-source" type="application/x-mpegURL" />
         </video>
     </div>
-
     <script src="https://vjs.zencdn.net/7.2.3/video.js"></script>
     <script src="https://vjs.zencdn.net/ie8/ie8-version/videojs-ie8.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.14.1/videojs-contrib-hls.js"></script>
-
     <script>
         const channelData = {
             sports: [
@@ -79,7 +79,6 @@
             categoryTitle.textContent = categoryId.charAt(0).toUpperCase() + categoryId.slice(1);
 
             channelList.innerHTML = '';
-
             channelData[categoryId].forEach(channel => {
                 const channelEl = document.createElement('div');
                 channelEl.innerHTML = `
@@ -102,7 +101,11 @@
             streamSource.src = streamUrl;
 
             if (!player) {
-                player = videojs("hls-example");
+                player = videojs("hls-example", {
+                    responsive: true,
+                    fluid: true,
+                    nativeControlsForTouch: true
+                });
             } else {
                 player.src({ type: "application/x-mpegURL", src: streamUrl });
             }
