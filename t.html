@@ -5,54 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TV Channels</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://vjs.zencdn.net/8.5.2/video-js.min.css" rel="stylesheet" />
+    <link href="https://vjs.zencdn.net/7.2.3/video-js.css" rel="stylesheet" />
     <style>
         .channel-active { background-color: rgb(191, 219, 254); }
-        .video-container {
-            position: relative;
-            width: 100%;
-            padding-top: 56.25%; /* 16:9 Aspect Ratio */
-            background-color: black;
-            border-radius: 8px; /* Rounded corners for the video container */
-            overflow: hidden; /* Ensures that no overflow happens */
+        @media (max-width: 768px) {
+            .channel-active {
+                background-color: rgba(191, 219, 254, 0.8);
+            }
+            #categories, #channels {
+                width: 100%;
+            }
         }
-        .video-container video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none; /* Remove default border */
-            border-radius: 8px; /* Rounded edges for the video */
-            object-fit: contain; /* Ensures the video is contained within the container */
+        @media (min-width: 768px) and (max-width: 1200px) {
+            #categories, #channels {
+                width: 25%;
+            }
         }
     </style>
 </head>
 <body class="flex h-screen">
-    <div id="categories" class="w-64 bg-gray-100 p-4 overflow-y-auto">
+
+    <div id="categories" class="w-64 md:w-1/4 bg-gray-100 p-4 overflow-y-auto">
         <h2 class="text-xl font-bold mb-4">Categories</h2>
         <div onclick="selectCategory('sports')" class="category-item p-2 mb-2 cursor-pointer hover:bg-gray-200">
             Sports
         </div>
     </div>
 
-    <div id="channels" class="w-64 bg-white p-4 border-r overflow-y-auto hidden">
+    <div id="channels" class="w-64 md:w-1/4 bg-white p-4 border-r overflow-y-auto hidden">
         <h3 id="category-title" class="text-lg font-semibold mb-4"></h3>
         <div id="channel-list"></div>
     </div>
 
-    <div id="video-player" class="flex-1 p-4 flex items-center justify-center">
-        <p class="text-gray-500">Select a channel to watch</p>
+    <div id="video-container" class="flex-1 p-4 flex items-center justify-center hidden">
+        <video
+            id="hls-example"
+            class="video-js vjs-default-skin w-full max-w-4xl"
+            width="400"
+            height="300"
+            controls
+        >
+            <source id="stream-source" type="application/x-mpegURL" />
+        </video>
     </div>
 
-    <!-- Video.js CSS -->
-    <link href="https://vjs.zencdn.net/7.2.3/video-js.min.css" rel="stylesheet" />
-
-    <!-- JS code -->
-    <!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
+    <script src="https://vjs.zencdn.net/7.2.3/video.js"></script>
     <script src="https://vjs.zencdn.net/ie8/ie8-version/videojs-ie8.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.14.1/videojs-contrib-hls.js"></script>
-    <script src="https://vjs.zencdn.net/7.2.3/video.js"></script>
 
     <script>
         const channelData = {
@@ -61,10 +60,12 @@
                     id: 'bein-hd',
                     name: 'BeIN Sports HD',
                     logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Bein_sport_logo.png/2560px-Bein_sport_logo.png',
-                    stream: 'https://xyzdddd.mizhls.ru/lb/premium91/index.m3u8' // Sample stream URL
+                    streamUrl: 'https://xyzdddd.mizhls.ru/lb/premium91/index.m3u8'
                 }
             ]
         };
+
+        let player = null;
 
         function selectCategory(categoryId) {
             const channelsDiv = document.getElementById('channels');
@@ -82,8 +83,8 @@
             channelData[categoryId].forEach(channel => {
                 const channelEl = document.createElement('div');
                 channelEl.innerHTML = `
-                    <div onclick="selectChannel('${channel.id}')" 
-                         class="flex items-center p-2 mb-2 cursor-pointer hover:bg-gray-100">
+                    <div class="flex items-center p-2 mb-2 cursor-pointer hover:bg-gray-100"
+                         onclick="playChannel('${channel.streamUrl}', '${channel.name}')">
                         <img src="${channel.logo}" alt="${channel.name}" 
                              class="w-10 h-10 mr-3 object-contain">
                         <span>${channel.name}</span>
@@ -93,38 +94,20 @@
             });
         }
 
-        function selectChannel(channelId) {
-            const videoPlayer = document.getElementById('video-player');
-            const channel = Object.values(channelData).flat().find(c => c.id === channelId);
+        function playChannel(streamUrl, channelName) {
+            const videoContainer = document.getElementById('video-container');
+            const streamSource = document.getElementById('stream-source');
 
-            videoPlayer.innerHTML = `
-                <div class="w-full max-w-4xl">
-                    <h2 class="text-2xl font-bold mb-4">${channel.name}</h2>
-                    <div class="video-container">
-                        <video 
-                            id="hls-example" 
-                            class="video-js vjs-default-skin" 
-                            controls 
-                            width="640" 
-                            height="360"
-                        >
-                            <source 
-                                type="application/x-mpegURL" 
-                                src="${channel.stream}"
-                            />
-                        </video>
-                    </div>
-                </div>
-            `;
+            videoContainer.classList.remove('hidden');
+            streamSource.src = streamUrl;
 
-            // Initialize Video.js
-            const player = videojs('hls-example');
-            player.ready(() => {
-                player.play(); // Automatically play the video if desired
-            });
+            if (!player) {
+                player = videojs("hls-example");
+            } else {
+                player.src({ type: "application/x-mpegURL", src: streamUrl });
+            }
 
-            // Hide the 'Select a channel to watch' text
-            videoPlayer.querySelector('p').style.display = 'none';
+            player.play();
         }
     </script>
 </body>
