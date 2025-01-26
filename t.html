@@ -8,37 +8,59 @@
     <link href="https://vjs.zencdn.net/7.2.3/video-js.css" rel="stylesheet" />
     <style>
         .channel-active { background-color: rgb(191, 219, 254); }
-        @media (max-width: 768px) {
-            .channel-active {
-                background-color: rgba(191, 219, 254, 0.8);
-            }
-            #categories, #channels {
-                width: 100%;
-            }
-        }
-        @media (min-width: 768px) and (max-width: 1200px) {
-            #categories, #channels {
-                width: 25%;
-            }
+        .floating-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ddd;
         }
         .video-container {
             width: 100%;
-            max-height: 90vh;
-            height: auto;
+            max-width: 480px;
+            aspect-ratio: 16 / 9;
+        }
+        .hidden { display: none; }
+        @media (max-width: 768px) {
+            .floating-button {
+                width: 40px;
+                height: 40px;
+                bottom: 15px;
+                right: 15px;
+            }
+            .video-container {
+                width: 90%;
+                max-width: 320px;
+                height: 180px; /* Resize video container for smaller screens */
+            }
         }
     </style>
 </head>
-<body class="flex h-screen">
+<body class="flex h-screen relative">
+
+    <!-- Categories Sidebar -->
     <div id="categories" class="w-64 md:w-1/4 bg-gray-100 p-4 overflow-y-auto">
         <h2 class="text-xl font-bold mb-4">Categories</h2>
         <div onclick="selectCategory('sports')" class="category-item p-2 mb-2 cursor-pointer hover:bg-gray-200">
             Sports
         </div>
     </div>
-    <div id="channels" class="w-64 md:w-1/4 bg-white p-4 border-r overflow-y-auto hidden">
+
+    <!-- Channels Sidebar -->
+    <div id="channels" class="w-64 md:w-1/4 bg-white p-4 border-r overflow-y-auto">
         <h3 id="category-title" class="text-lg font-semibold mb-4"></h3>
         <div id="channel-list"></div>
     </div>
+
+    <!-- Video Player -->
     <div id="video-container" class="flex-1 p-4 flex items-center justify-center hidden">
         <video
             id="hls-example"
@@ -50,10 +72,17 @@
             <source id="stream-source" type="application/x-mpegURL" />
         </video>
     </div>
+
+    <!-- Floating Button -->
+    <div id="back-button" class="floating-button" onclick="handleBack()">
+        <img src="https://cdn-icons-png.flaticon.com/512/93/93634.png" alt="Menu" class="w-6 h-6">
+    </div>
+
     <script src="https://vjs.zencdn.net/7.2.3/video.js"></script>
     <script src="https://vjs.zencdn.net/ie8/ie8-version/videojs-ie8.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.14.1/videojs-contrib-hls.js"></script>
     <script>
+        // Data for channels
         const channelData = {
             sports: [
                 {
@@ -66,8 +95,11 @@
         };
 
         let player = null;
+        let currentView = 'categories'; // Tracks current view: 'categories', 'channels', or 'player'
 
+        // Select Category (display channels)
         function selectCategory(categoryId) {
+            const categoriesDiv = document.getElementById('categories');
             const channelsDiv = document.getElementById('channels');
             const channelList = document.getElementById('channel-list');
             const categoryTitle = document.getElementById('category-title');
@@ -75,6 +107,7 @@
             document.querySelectorAll('.category-item').forEach(el => el.classList.remove('channel-active'));
             event.currentTarget.classList.add('channel-active');
 
+            categoriesDiv.classList.add('hidden');
             channelsDiv.classList.remove('hidden');
             categoryTitle.textContent = categoryId.charAt(0).toUpperCase() + categoryId.slice(1);
 
@@ -91,8 +124,11 @@
                 `;
                 channelList.appendChild(channelEl);
             });
+
+            currentView = 'channels';
         }
 
+        // Play selected channel
         function playChannel(streamUrl, channelName) {
             const videoContainer = document.getElementById('video-container');
             const streamSource = document.getElementById('stream-source');
@@ -111,6 +147,24 @@
             }
 
             player.play();
+            currentView = 'player';
+        }
+
+        // Handle Back Button Logic
+        function handleBack() {
+            const categoriesDiv = document.getElementById('categories');
+            const videoContainer = document.getElementById('video-container');
+            const channelsDiv = document.getElementById('channels');
+
+            if (currentView === 'player') {
+                categoriesDiv.classList.remove('hidden'); // Show categories again
+                videoContainer.classList.add('hidden'); // Hide video player
+                currentView = 'categories';
+            } else if (currentView === 'channels') {
+                categoriesDiv.classList.remove('hidden'); // Show categories again
+                channelsDiv.classList.add('hidden'); // Hide channels list
+                currentView = 'categories';
+            }
         }
     </script>
 </body>
