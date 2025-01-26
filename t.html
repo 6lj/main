@@ -23,12 +23,14 @@
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
             border: 1px solid #ddd;
         }
-        .video-container {
+        /* Video player container adjusted to top */
+        #video-container {
             width: 100%;
-            max-width: 480px;
+            max-width: 800px; /* Adjust maximum size for larger screens */
+            margin: 20px auto;
             aspect-ratio: 16 / 9;
         }
-        .hidden { display: none; }
+        /* Media queries for smaller screens */
         @media (max-width: 768px) {
             .floating-button {
                 width: 40px;
@@ -36,15 +38,30 @@
                 bottom: 15px;
                 right: 15px;
             }
-            .video-container {
+            /* Adjusting video container for mobile devices */
+            #video-container {
                 width: 90%;
-                max-width: 320px;
-                height: 180px; /* Resize video container for smaller screens */
+                max-width: 320px; /* Smaller size on mobile */
+                height: 180px;
+                margin-top: 10px; /* Reduced margin for mobile view */
             }
         }
     </style>
 </head>
-<body class="flex h-screen relative">
+<body class="flex h-screen relative flex-col">
+
+    <!-- Video Player -->
+    <div id="video-container" class="flex-1 p-4 flex items-center justify-center hidden">
+        <video
+            id="hls-example"
+            class="video-js vjs-default-skin"
+            controls
+            preload="auto"
+            playsinline
+        >
+            <source id="stream-source" type="application/x-mpegURL" />
+        </video>
+    </div>
 
     <!-- Categories Sidebar -->
     <div id="categories" class="w-64 md:w-1/4 bg-gray-100 p-4 overflow-y-auto">
@@ -58,19 +75,6 @@
     <div id="channels" class="w-64 md:w-1/4 bg-white p-4 border-r overflow-y-auto">
         <h3 id="category-title" class="text-lg font-semibold mb-4"></h3>
         <div id="channel-list"></div>
-    </div>
-
-    <!-- Video Player -->
-    <div id="video-container" class="flex-1 p-4 flex items-center justify-center hidden">
-        <video
-            id="hls-example"
-            class="video-js vjs-default-skin video-container"
-            controls
-            preload="auto"
-            playsinline
-        >
-            <source id="stream-source" type="application/x-mpegURL" />
-        </video>
     </div>
 
     <!-- Floating Button -->
