@@ -26,10 +26,9 @@
         /* Video player container adjusted to top */
         #video-container {
             width: 100%;
-            max-width: 800px; /* Max size for larger screens */
+            max-width: 800px; /* Adjust maximum size for larger screens */
             margin: 20px auto;
             aspect-ratio: 16 / 9;
-            display: none; /* Initially hidden */
         }
         /* Media queries for smaller screens */
         @media (max-width: 768px) {
@@ -43,9 +42,13 @@
             #video-container {
                 width: 90%;
                 max-width: 320px; /* Smaller size on mobile */
-                height: auto; /* Responsive height */
+                height: 180px;
                 margin-top: 10px; /* Reduced margin for mobile view */
-                display: block; /* Show in mobile */
+            }
+            /* Stack the categories and channels on top of each other */
+            #categories, #channels {
+                width: 100%;
+                max-width: none; /* Remove fixed width */
             }
         }
     </style>
@@ -101,10 +104,11 @@
         };
 
         let player = null;
-        let currentView = 'categories';
+        let currentView = 'categories'; // Tracks current view: 'categories', 'channels', or 'player'
 
         // Select Category (display channels)
         function selectCategory(categoryId) {
+            const categoriesDiv = document.getElementById('categories');
             const channelsDiv = document.getElementById('channels');
             const channelList = document.getElementById('channel-list');
             const categoryTitle = document.getElementById('category-title');
@@ -112,13 +116,14 @@
             document.querySelectorAll('.category-item').forEach(el => el.classList.remove('channel-active'));
             event.currentTarget.classList.add('channel-active');
 
+            categoriesDiv.classList.add('hidden');
             channelsDiv.classList.remove('hidden');
             categoryTitle.textContent = categoryId.charAt(0).toUpperCase() + categoryId.slice(1);
 
             channelList.innerHTML = '';
             channelData[categoryId].forEach(channel => {
                 const channelEl = document.createElement('div');
-                channelEl.innerHTML = `
+                channelEl.innerHTML = `  
                     <div class="flex items-center p-2 mb-2 cursor-pointer hover:bg-gray-100"
                          onclick="playChannel('${channel.streamUrl}', '${channel.name}')">
                         <img src="${channel.logo}" alt="${channel.name}" 
@@ -151,7 +156,10 @@
             }
 
             player.play();
+
+            // Hide channels after playing
             document.getElementById('channels').classList.add('hidden');
+
             currentView = 'player';
         }
 
@@ -162,12 +170,12 @@
             const channelsDiv = document.getElementById('channels');
 
             if (currentView === 'player') {
-                categoriesDiv.classList.remove('hidden');
-                videoContainer.classList.add('hidden');
+                categoriesDiv.classList.remove('hidden'); // Show categories again
+                videoContainer.classList.add('hidden'); // Hide video player
                 currentView = 'categories';
             } else if (currentView === 'channels') {
-                channelsDiv.classList.add('hidden');
-                categoriesDiv.classList.remove('hidden');
+                categoriesDiv.classList.remove('hidden'); // Show categories again
+                channelsDiv.classList.add('hidden'); // Hide channels list
                 currentView = 'categories';
             }
         }
