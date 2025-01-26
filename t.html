@@ -45,6 +45,16 @@
                 height: 180px;
                 margin-top: 10px; /* Reduced margin for mobile view */
             }
+            #categories, #channels {
+                width: 100%; /* Make the categories and channels full width on mobile */
+                padding: 10px;
+            }
+        }
+        /* Hide the categories when in mobile view */
+        @media (max-width: 480px) {
+            #categories {
+                display: none; /* Hide categories when in mobile view */
+            }
         }
     </style>
 </head>
@@ -151,6 +161,10 @@
             }
 
             player.play();
+
+            // Hide channels after playing
+            document.getElementById('channels').classList.add('hidden');
+
             currentView = 'player';
         }
 
