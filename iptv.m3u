@@ -1,0 +1,103 @@
+#EXTM3U
+#KODIPROP:inputstream.adaptive
+#KODIPROP:inputstream.adaptive.license_type=com.microsoft.playready
+#KODIPROP:inputstream.adaptive.license_key=8080:1234567
+#KODIPROP:inputstream.adaptive.manifest_type=m3u8
+#EXTINF:-1 tvg-shift="3" tvg-logo="https://www.broadcastprome.com/wp-content/uploads/2017/02/bein-logo.jpg" group-title="رياضه",bein sport 1 Full HD 
+https://xyzdddd.mizhls.ru/lb/premium91/index.m3u8
+#KODIPROP:inputstream.adaptive
+#KODIPROP:inputstream.adaptive.license_type=com.microsoft.playready
+#KODIPROP:inputstream.adaptive.license_key=8080:1234567
+#KODIPROP:inputstream.adaptive.manifest_type=m3u8
+#EXTINF:-1 tvg-shift="3" tvg-logo="https://www.broadcastprome.com/wp-content/uploads/2017/02/bein-logo.jpg" group-title="رياضه",bein sport 2 Full HD 
+https://xyzdddd.mizhls.ru/lb/premium92/index.m3u8
+#KODIPROP:inputstream.adaptive
+#KODIPROP:inputstream.adaptive.license_type=com.microsoft.playready
+#KODIPROP:inputstream.adaptive.license_key=8080:1234567
+#KODIPROP:inputstream.adaptive.manifest_type=m3u8
+#EXTINF:-1 tvg-shift="3" tvg-logo="https://www.broadcastprome.com/wp-content/uploads/2017/02/bein-logo.jpg" group-title="رياضه",bein sport 3 Full HD 
+https://xyzdddd.mizhls.ru/lb/premium93/index.m3u8
+#KODIPROP:inputstream.adaptive
+#KODIPROP:inputstream.adaptive.license_type=com.microsoft.playready
+#KODIPROP:inputstream.adaptive.license_key=8080:1234567
+#KODIPROP:inputstream.adaptive.manifest_type=m3u8
+#EXTINF:-1 tvg-shift="3" tvg-logo="https://www.broadcastprome.com/wp-content/uploads/2017/02/bein-logo.jpg" group-title="رياضه",bein sport 4 Full HD 
+https://xyzdddd.mizhls.ru/lb/premium94/index.m3u8
+#KODIPROP:inputstream.adaptive
+#KODIPROP:inputstream.adaptive.license_type=com.microsoft.playready
+#KODIPROP:inputstream.adaptive.license_key=8080:1234567
+#KODIPROP:inputstream.adaptive.manifest_type=m3u8
+#EXTINF:-1 tvg-shift="3" tvg-logo="https://www.broadcastprome.com/wp-content/uploads/2017/02/bein-logo.jpg" group-title="رياضه",bein sport 5 Full HD 
+https://xyzdddd.mizhls.ru/lb/premium95/index.m3u8
+#KODIPROP:inputstream.adaptive
+#KODIPROP:inputstream.adaptive.license_type=com.microsoft.playready
+#KODIPROP:inputstream.adaptive.license_key=8080:1234567
+#KODIPROP:inputstream.adaptive.manifest_type=m3u8
+#EXTINF:-1 tvg-shift="3" tvg-logo="https://www.broadcastprome.com/wp-content/uploads/2017/02/bein-logo.jpg" group-title="رياضه",bein sport 6 Full HD 
+https://xyzdddd.mizhls.ru/lb/premium96/index.m3u8
+#KODIPROP:inputstream.adaptive
+#KODIPROP:inputstream.adaptive.license_type=com.microsoft.playready
+#KODIPROP:inputstream.adaptive.license_key=8080:1234567
+#KODIPROP:inputstream.adaptive.manifest_type=m3u8
+#EXTINF:-1 tvg-shift="3" tvg-logo="https://www.broadcastprome.com/wp-content/uploads/2017/02/bein-logo.jpg" group-title="رياضه",bein sport 7 Full HD 
+https://xyzdddd.mizhls.ru/lb/premium97/index.m3u8
+#KODIPROP:inputstream.adaptive
+#KODIPROP:inputstream.adaptive.license_type=com.microsoft.playready
+#KODIPROP:inputstream.adaptive.license_key=8080:1234567
+#KODIPROP:inputstream.adaptive.manifest_type=m3u8
+#EXTINF:-1 tvg-shift="3" tvg-logo="https://www.broadcastprome.com/wp-content/uploads/2017/02/bein-logo.jpg" group-title="رياضه",bein sport 8 Full HD 
+https://xyzdddd.mizhls.ru/lb/premium98/index.m3u8
+#KODIPROP:inputstream.adaptive
+#KODIPROP:inputstream.adaptive.license_type=com.microsoft.playready
+#KODIPROP:inputstream.adaptive.license_key=8080:1234567
+#KODIPROP:inputstream.adaptive.manifest_type=m3u8
+#EXTINF:-1 tvg-shift="3" tvg-logo="https://www.broadcastprome.com/wp-content/uploads/2017/02/bein-logo.jpg" group-title="رياضه",bein sport 9 Full HD 
+https://xyzdddd.mizhls.ru/lb/premium99/index.m3u8
+#KODIPROP:inputstream.adaptive
+#KODIPROP:inputstream.adaptive.license_type=com.microsoft.playready
+#KODIPROP:inputstream.adaptive.license_key=8080:1234567
+#KODIPROP:inputstream.adaptive.manifest_type=m3u8
+#EXTINF:-1 tvg-shift="3" tvg-logo="https://news.elsob7.com/wp-content/uploads/2024/10/IMG_1842.jpeg" group-title="رياضه",SSC 1 HD
+https://xyzdddd.mizhls.ru/lb/premium614/index.m3u8
+#KODIPROP:inputstream.adaptive
+#KODIPROP:inputstream.adaptive.license_type=com.microsoft.playready
+#KODIPROP:inputstream.adaptive.license_key=8080:1234567
+#KODIPROP:inputstream.adaptive.manifest_type=m3u8
+#EXTINF:-1 tvg-shift="3" tvg-logo="https://news.elsob7.com/wp-content/uploads/2024/10/IMG_1842.jpeg" group-title="رياضه",SSC 2 HD
+https://xyzdddd.mizhls.ru/lb/premium615/index.m3u8
+#KODIPROP:inputstream.adaptive
+#KODIPROP:inputstream.adaptive.license_type=com.microsoft.playready
+#KODIPROP:inputstream.adaptive.license_key=8080:1234567
+#KODIPROP:inputstream.adaptive.manifest_type=m3u8
+#EXTINF:-1 tvg-shift="3" tvg-logo="https://news.elsob7.com/wp-content/uploads/2024/10/IMG_1842.jpeg" group-title="رياضه",SSC 3 HD
+https://xyzdddd.mizhls.ru/lb/premium616/index.m3u8
+#KODIPROP:inputstream.adaptive
+#KODIPROP:inputstream.adaptive.license_type=com.microsoft.playready
+#KODIPROP:inputstream.adaptive.license_key=8080:1234567
+#KODIPROP:inputstream.adaptive.manifest_type=m3u8
+#EXTINF:-1 tvg-shift="3" tvg-logo="https://news.elsob7.com/wp-content/uploads/2024/10/IMG_1842.jpeg" group-title="رياضه",SSC 4 HD
+https://xyzdddd.mizhls.ru/lb/premium617/index.m3u8
+#KODIPROP:inputstream.adaptive
+#KODIPROP:inputstream.adaptive.license_type=com.microsoft.playready
+#KODIPROP:inputstream.adaptive.license_key=8080:1234567
+#KODIPROP:inputstream.adaptive.manifest_type=m3u8
+#EXTINF:-1 tvg-shift="3" tvg-logo="https://news.elsob7.com/wp-content/uploads/2024/10/IMG_1842.jpeg" group-title="رياضه",SSC 5 HD
+https://xyzdddd.mizhls.ru/lb/premium618/index.m3u8
+#KODIPROP:inputstream.adaptive
+#KODIPROP:inputstream.adaptive.license_type=com.microsoft.playready
+#KODIPROP:inputstream.adaptive.license_key=8080:1234567
+#KODIPROP:inputstream.adaptive.manifest_type=m3u8
+#EXTINF:-1 tvg-shift="3" tvg-logo="https://news.elsob7.com/wp-content/uploads/2024/10/IMG_1842.jpeg" group-title="رياضه",SSC  Extra 1 HD
+https://xyzdddd.mizhls.ru/lb/premium619/index.m3u8
+#KODIPROP:inputstream.adaptive
+#KODIPROP:inputstream.adaptive.license_type=com.microsoft.playready
+#KODIPROP:inputstream.adaptive.license_key=8080:1234567
+#KODIPROP:inputstream.adaptive.manifest_type=m3u8
+#EXTINF:-1 tvg-shift="3" tvg-logo="https://news.elsob7.com/wp-content/uploads/2024/10/IMG_1842.jpeg" group-title="رياضه",SSC  Extra 2 HD
+https://xyzdddd.mizhls.ru/lb/premium619/index.m3u8
+#KODIPROP:inputstream.adaptive
+#KODIPROP:inputstream.adaptive.license_type=com.microsoft.playready
+#KODIPROP:inputstream.adaptive.license_key=8080:1234567
+#KODIPROP:inputstream.adaptive.manifest_type=m3u8
+#EXTINF:-1 tvg-shift="3" tvg-logo="https://news.elsob7.com/wp-content/uploads/2024/10/IMG_1842.jpeg" group-title="رياضه",SSC  Extra 3 HD
+https://xyzdddd.mizhls.ru/lb/premium620/index.m3u8
