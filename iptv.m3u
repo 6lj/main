@@ -131,9 +131,5 @@ https://offerstore.xyz/ddh/stream.php?id=33&srv=1&vtoken=&e=.m3u8
 #KODIPROP:inputstream.adaptive.manifest_type=m3u8
 #EXTINF:-1 tvg-shift="3" tvg-logo="https://dqh479dn9vg99.cloudfront.net/wp-content/uploads/sites/9/2023/02/tnt-sports-logo.jpeg" group-title="رياضه",TNT 4
 https://offerstore.xyz/ddh/stream.php?id=34&srv=1&vtoken=&e=.m3u8
-#KODIPROP:inputstream.adaptive
-#KODIPROP:inputstream.adaptive.license_type=com.microsoft.playready
-#KODIPROP:inputstream.adaptive.license_key=8080:1234567
-#KODIPROP:inputstream.adaptive.manifest_type=m3u8
-#EXTINF:-1 tvg-shift="3" tvg-logo="https://image.api.playstation.com/vulcan/ap/rnd/202309/0618/36ed2eda6185435322623473185b7ec765875be46b9b3a83.jpg" group-title="رياضه",UFC 
-https://streamline.sturls.com/SonySportsTen02/index.fmp4.m3u8?token=ab1c42576e9da51aa95ca0b3c767cc10b0553506-42abc21bb5d44e43243fb26a1dd30fce-1738180363-1738169563
+
+
