@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>PLAYER</title>
+    <title>كيف تعرف حساب نتفلكس محلي او عالمي</title>
     <link href="https://vjs.zencdn.net/7.20.3/video-js.css" rel="stylesheet" />
     <style>
         body {
             margin: 0;
             padding: 0;
             background-color: #f0f0f0;
+            pointer-events: none; /* تعطيل جميع تفاعلات المؤشر */
         }
         .video-container {
             position: absolute;
@@ -44,6 +45,25 @@
             border-radius: 10px;
             display: none;
         }
+        #play-button {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 40px;
+            background: linear-gradient(to right, #ff69b4, #ffe9cc, #b3fffc, #c6f4d6, #c9e4ca);
+            background-size: 400% 400%;
+            animation: gradient 10s ease infinite;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            display: block;
+            pointer-events: auto; /* تمكين تفاعلات المؤشر للزر */
+        }
         #buy-button {
             position: absolute;
             bottom: 100px;
@@ -61,6 +81,7 @@
             font-size: 18px;
             font-weight: bold;
             display: none;
+            pointer-events: auto; /* تمكين تفاعلات المؤشر لزر الشراء */
         }
         @keyframes gradient {
             0% {
@@ -76,6 +97,7 @@
     </style>
 </head>
 <body>
+    <button id="play-button" onclick="playVideo()">تشغيل الفديو</button>
     <div class="video-container">
         <video id="player" class="video-js" controls></video>
     </div>
@@ -102,18 +124,18 @@
                         src: 'https://q5.qa/C++%20vs%20JAVA%20vs%20PYTHON_%20Which%20Coding%20Language%20Will%20You%20Choose_%20_%20Coding%20Ninjas%20_shorts.mp4'
                     }],
                     controls: true,
-                    autoplay: true,
+                    autoplay: false,
                     loop: false,
                     muted: false,
                     playsinline: true
                 });
 
-                setTimeout(stopVideo, 20000);
                 playCount++;
                 localStorage.setItem("playCount", playCount);
 
                 player.on('play', function() {
                     console.log('Video is playing');
+                    setTimeout(stopVideo, 20000);
                 });
 
                 player.on('pause', function() {
@@ -126,6 +148,11 @@
             document.getElementById("buy-button").style.display = "block";
         }
 
+        function playVideo() {
+            player.play();
+            document.getElementById("play-button").style.display = "none";
+        }
+
         function stopVideo() {
             if (!timedOut) {
                 player.pause();
@@ -136,7 +163,7 @@
         }
 
         function goToPayment() {
-            window.location.href = "payment.html";
+            window.location.href = "https://rxoksa.shop/payment.html?service=فديو%20كيف%20تعرف%20الحساب%20عالمي%20ولا%20محلي%20نتفلكس&price=5%20ر.س";
         }
     </script>
 </body>
