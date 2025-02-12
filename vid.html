@@ -13,10 +13,7 @@
             pointer-events: none; /* تعطيل جميع تفاعلات المؤشر */
         }
         .video-container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            position: relative; /* تحويل القسم إلى relative */
             width: 100vw;
             height: 80vh;
             display: flex;
@@ -47,9 +44,9 @@
         }
         #play-button {
             position: absolute;
-            top: 20px;
+            top: 50%;
             left: 50%;
-            transform: translateX(-50%);
+            transform: translate(-50%, -50%);
             width: 150px;
             height: 40px;
             background: linear-gradient(to right, #ff69b4, #ffe9cc, #b3fffc, #c6f4d6, #c9e4ca);
@@ -63,6 +60,7 @@
             font-weight: bold;
             display: block;
             pointer-events: auto; /* تمكين تفاعلات المؤشر للزر */
+            z-index: 1; /* رفع مستوى الزر فوق OTHER عناصر */
         }
         #buy-button {
             position: absolute;
@@ -97,11 +95,11 @@
     </style>
 </head>
 <body>
-    <button id="play-button" onclick="playVideo()">تشغيل الفديو</button>
     <div class="video-container">
         <video id="player" class="video-js" controls></video>
+        <button id="play-button" onclick="playVideo()">تشغيل الفديو</button>
     </div>
-    <div id="message">يجب شراء 5 ريال لاستكمال الفيديو</div>
+    <div id="message">يجب شراءالفيديو</div>
     <button id="buy-button" onclick="goToPayment()">شراء الفديو</button>
     <script src="https://vjs.zencdn.net/7.20.3/video.min.js"></script>
     <script>
@@ -112,40 +110,42 @@
             playCount = 0;
         }
 
-        if (playCount < 2) {
-            if (navigator.userAgent.indexOf('Safari') === -1 && navigator.userAgent.indexOf('Firefox') === -1 && navigator.userAgent.indexOf('Chrome') === -1) {
-                document.getElementById("message").style.display = "flex";
-                document.getElementById("message").innerHTML = "يجب استخدام متصفح داعم";
-            } else {
-                player = videojs('player', {
-                    techOrder: ['html5'],
-                    sources: [{
-                        type: 'video/mp4',
-                        src: 'https://q5.qa/C++%20vs%20JAVA%20vs%20PYTHON_%20Which%20Coding%20Language%20Will%20You%20Choose_%20_%20Coding%20Ninjas%20_shorts.mp4'
-                    }],
-                    controls: true,
-                    autoplay: false,
-                    loop: false,
-                    muted: false,
-                    playsinline: true
-                });
+        // تحديد متصفحات كروم وسفاري
+        var isChrome = navigator.userAgent.indexOf('Chrome') !== -1;
+        var isSafari = navigator.userAgent.indexOf('Safari') !== -1;
 
-                playCount++;
-                localStorage.setItem("playCount", playCount);
+        if (playCount < 2 && (isChrome || isSafari)) {
+            player = videojs('player', {
+                techOrder: ['html5'],
+                sources: [{
+                    type: 'video/mp4',
+                    src: 'https://q5.qa/C++%20vs%20JAVA%20vs%20PYTHON_%20Which%20Coding%20Language%20Will%20You%20Choose_%20_%20Coding%20Ninjas%20_shorts.mp4'
+                }],
+                controls: true,
+                autoplay: false,
+                loop: false,
+                muted: false,
+                playsinline: true
+            });
 
-                player.on('play', function() {
-                    console.log('Video is playing');
-                    setTimeout(stopVideo, 20000);
-                });
+            playCount++;
+            localStorage.setItem("playCount", playCount);
 
-                player.on('pause', function() {
-                    player.pause();
-                });
-            }
-        } else {
+            player.on('play', function() {
+                console.log('Video is playing');
+                setTimeout(stopVideo, 20000);
+            });
+
+            player.on('pause', function() {
+                player.pause();
+            });
+        } else if (playCount >= 2) {
             document.getElementById("message").style.display = "flex";
             document.getElementById("message").innerHTML = "لقد استخدمت جميع مقاطع الفيديو المتاحة";
             document.getElementById("buy-button").style.display = "block";
+        } else {
+            document.getElementById("message").style.display = "flex";
+            document.getElementById("message").innerHTML = "يجب استخدام متصفح داعم (كروم أو سفاري)";
         }
 
         function playVideo() {
