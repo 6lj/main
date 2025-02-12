@@ -10,7 +10,7 @@
             margin: 0;
             padding: 0;
             background-color: #f0f0f0;
-            pointer-events: none; /* تعطيل جميع تفاعلات المؤشر */
+            pointer-events: none; /* تعطيل جميع تفاعالات المؤشر */
         }
         .video-container {
             position: relative; /* تحويل القسم إلى relative */
@@ -134,6 +134,7 @@
             player.on('play', function() {
                 console.log('Video is playing');
                 setTimeout(stopVideo, 20000);
+                document.getElementById("play-button").style.display = "none"; // إخفاء زر التشغيل عند النقر عليه
             });
 
             player.on('pause', function() {
@@ -143,14 +144,15 @@
             document.getElementById("message").style.display = "flex";
             document.getElementById("message").innerHTML = "لقد استخدمت جميع مقاطع الفيديو المتاحة";
             document.getElementById("buy-button").style.display = "block";
+            document.getElementById("play-button").style.display = "none"; // إخفاء زر التشغيل عند انتهاء المحاولات
         } else {
             document.getElementById("message").style.display = "flex";
             document.getElementById("message").innerHTML = "يجب استخدام متصفح داعم (كروم أو سفاري)";
+            document.getElementById("play-button").style.display = "none"; // إخفاء زر التشغيل عند استخدام متصفح غير معتمد
         }
 
         function playVideo() {
             player.play();
-            document.getElementById("play-button").style.display = "none";
         }
 
         function stopVideo() {
