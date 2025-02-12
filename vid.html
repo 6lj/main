@@ -16,17 +16,15 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 1200px; /* زيادة العرض ل 1200 */
-            height: 900px; /* زيادة الارتفاع ل 900 */
+            width: 100vw;
+            height: 80vh;
             display: flex;
             justify-content: center;
             align-items: center;
         }
-        @media (max-width: 768px) {
-            .video-container {
-                width: 90%;
-                height: 80%;
-            }
+        #player {
+            width: 100% !important;
+            height: 100% !important;
         }
         #message {
             position: absolute;
@@ -79,7 +77,7 @@
 </head>
 <body>
     <div class="video-container">
-        <video id="player" class="video-js" width="100%" height="100%" controls></video>
+        <video id="player" class="video-js" controls></video>
     </div>
     <div id="message">يجب شراء 5 ريال لاستكمال الفيديو</div>
     <button id="buy-button" onclick="goToPayment()">شراء الفديو</button>
@@ -93,30 +91,36 @@
         }
 
         if (playCount < 2) {
-            player = videojs('player', {
-                techOrder: ['html5'],
-                sources: [{
-                    type: 'video/mp4',
-                    src: 'https://q5.qa/C++%20vs%20JAVA%20vs%20PYTHON_%20Which%20Coding%20Language%20Will%20You%20Choose_%20_%20Coding%20Ninjas%20_shorts.mp4'
-                }],
-                controls: true,
-                autoplay: true,
-                loop: false,
-                muted: false,
-                playsinline: true
-            });
+            var userAgent = navigator.userAgent.toLowerCase();
+            if (userAgent.indexOf('videojs') !== -1) {
+                player = videojs('player', {
+                    techOrder: ['html5'],
+                    sources: [{
+                        type: 'video/mp4',
+                        src: 'https://q5.qa/C++%20vs%20JAVA%20vs%20PYTHON_%20Which%20Coding%20Language%20Will%20You%20Choose_%20_%20Coding%20Ninjas%20_shorts.mp4'
+                    }],
+                    controls: true,
+                    autoplay: true,
+                    loop: false,
+                    muted: false,
+                    playsinline: true
+                });
 
-            setTimeout(stopVideo, 20000);
-            playCount++;
-            localStorage.setItem("playCount", playCount);
+                setTimeout(stopVideo, 20000);
+                playCount++;
+                localStorage.setItem("playCount", playCount);
 
-            player.on('play', function() {
-                console.log('Video is playing');
-            });
+                player.on('play', function() {
+                    console.log('Video is playing');
+                });
 
-            player.on('pause', function() {
-                player.pause();
-            });
+                player.on('pause', function() {
+                    player.pause();
+                });
+            } else {
+                document.getElementById("message").style.display = "flex";
+                document.getElementById("message").innerHTML = "يجب استخدام متصفح داعم";
+            }
         } else {
             document.getElementById("message").style.display = "flex";
             document.getElementById("message").innerHTML = "لقد استخدمت جميع مقاطع الفيديو المتاحة";
