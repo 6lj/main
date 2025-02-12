@@ -91,8 +91,10 @@
         }
 
         if (playCount < 2) {
-            var userAgent = navigator.userAgent.toLowerCase();
-            if (userAgent.indexOf('videojs') !== -1) {
+            if (navigator.userAgent.indexOf('Safari') === -1 && navigator.userAgent.indexOf('Firefox') === -1 && navigator.userAgent.indexOf('Chrome') === -1) {
+                document.getElementById("message").style.display = "flex";
+                document.getElementById("message").innerHTML = "يجب استخدام متصفح داعم";
+            } else {
                 player = videojs('player', {
                     techOrder: ['html5'],
                     sources: [{
@@ -117,9 +119,6 @@
                 player.on('pause', function() {
                     player.pause();
                 });
-            } else {
-                document.getElementById("message").style.display = "flex";
-                document.getElementById("message").innerHTML = "يجب استخدام متصفح داعم";
             }
         } else {
             document.getElementById("message").style.display = "flex";
