@@ -4,193 +4,115 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Welcome</title>
-    <style>
-        /* General Styles */
-        body {
-            -webkit-text-size-adjust: 100%; /* Prevent text scaling on iOS */
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            min-height: 100vh; /* Use min-height for proper height calculation */
-            background-color: #f4f4f9;
-            text-align: center;
-            overflow: auto; /* Ensure scrollability */
-        }
-
-        .title {
-            font-size: 3rem;
-            font-weight: bold;
-            background: linear-gradient(90deg, red, orange, yellow, green, blue, purple);
-            background-size: 300%;
-            -webkit-background-clip: text;
-            color: transparent;
-            -webkit-animation: gradient-animation 5s ease infinite;
-            animation: gradient-animation 5s ease infinite;
-            text-shadow: 3px 3px 0 rgba(255, 255, 255, 0.4);
-            margin: 0;
-        }
-
-        .subtitle {
-            font-size: 1.5rem;
-            font-weight: normal;
-            background: linear-gradient(90deg, #ff0080, #ff8c00, #ffe000, #8eff00, #00ffe0, #0080ff);
-            background-size: 300%;
-            -webkit-background-clip: text;
-            color: transparent;
-            -webkit-animation: gradient-animation 5s ease infinite;
-            animation: gradient-animation 5s ease infinite;
-            margin-top: 10px;
-        }
-
-        @keyframes gradient-animation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        @-webkit-keyframes gradient-animation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .social-links {
-            margin-top: 20px;
-            display: flex;
-            flex-wrap: wrap; /* Allow wrapping for smaller screens */
-            gap: 12px;
-            justify-content: center;
-        }
-
-        .social-link {
-            text-decoration: none;
-            font-weight: 500;
-            padding: 10px 28px;
-            border-radius: 25px;
-            transition: all 0.3s ease;
-            color: white;
-        }
-
-        .gameguardian { background-color: #800080; }
-        .iosgods { background-color: #007aff; }
-        .github { background-color: #333; }
-        .cv { background-color: #4caf50; }
-
-        .container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* Adjusted for smaller screens */
-            gap: 12px;
-            max-width: 1000px;
-            width: 90%;
-            margin-top: 40px;
-        }
-
-        .logo-card {
-            background-color: white;
-            padding: 30px;
-            border-radius: 15px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.3s ease;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
-            overflow: hidden;
-        }
-
-        .logo-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .logo-wrapper img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        .platform-name {
-            margin-top: 12px;
-            font-size: 16px;
-            font-weight: 600;
-            color: white;
-        }
-
-        .instagram-card { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
-        .x-card { background-color: #000000; }
-        .tiktok-card { background: linear-gradient(45deg, #00f2ea, #ff0050); }
-        .telegram-card { background-color: #0088cc; }
-        .snapchat-card { background-color: #ffff00; }
-        .linkedin-card { background-color: #0077b5; }
-        .discord-card { background-color: #5865f2; }
-        .youtube-card { background-color: #ff0000; }
-        .facebook-card { background-color: #1877f2; }
-    </style>
+    <link rel="stylesheet" href="styles4.css">
 </head>
 <body>
-    <div>
-        <h1 class="title">Welcome!</h1>
-        <h2 class="subtitle">Mohmmad Hissyn Aon (Endup)</h2>
-        <div class="social-links">
-            <a href="https://gameguardian.net" target="_blank" class="social-link gameguardian">Game Guardian</a>
-            <a href="https://iosgods.com" target="_blank" class="social-link iosgods">iOSGods</a>
-            <a href="https://github.com" target="_blank" class="social-link github">GitHub</a>
-            <a href="cv.pdf" target="_blank" class="social-link cv">CV</a>
-        </div>
-    </div>
-
+    <div class="particles" id="particles"></div>
+    <div class="scroll-indicator"></div>
     <div class="container">
-        <div class="logo-card instagram-card">
-            <div class="logo-wrapper">
-                <img src="https://img.icons8.com/m_outlined/512/FFFFFF/instagram-new.png" alt="Instagram Logo">
-            </div>
-            <div class="platform-name">Instagram</div>
+        <div class="header">
+            <h1 class="main-title">Welcome!</h1>
+            <h2 class="subtitle">Mohmmad Hissyn Aon (Endup)</h2>
         </div>
-        <div class="logo-card x-card">
-            <div class="logo-wrapper">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/X_logo_2023_%28white%29.png/800px-X_logo_2023_%28white%29.png" alt="X Logo">
+        <div class="main-grid">
+            <div class="glass-card social-links">
+                <a href="https://gameguardian.net/forum/profile/1301541-endup/" target="_blank" class="social-link gameguardian">Game Guardian (LUA) </a>
+                <a href="https://iosgods.com/profile/3009815-endup/" target="_blank" class="social-link iosgods">iOSGods(Obj-C) </a>
+                <a href="https://github.com/6lj" target="_blank" class="social-link github">GitHub</a>
+                <a href="#" class="social-link cv" onclick="showCVMessage()">CV</a>
             </div>
-            <div class="platform-name">X (Twitter)</div>
-        </div>
-        <div class="logo-card tiktok-card">
-            <div class="logo-wrapper">
-                <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/tiktok-white-icon.png" alt="TikTok Logo">
+            <div class="glass-card">
+                <a href="https://www.instagram.com/ry3c?igsh=ZjZybjg3bWt3dWw3&utm_source=qr" target="_blank" class="logo-card instagram-card">
+                    <div class="logo-wrapper">
+                        <img src="https://img.icons8.com/m_outlined/512/FFFFFF/instagram-new.png" alt="Instagram Logo">
+                    </div>
+                    <div class="platform-name">Instagram</div>
+                </a>
+                <a href="https://x.com/mu4a" target="_blank" class="logo-card x-card">
+                    <div class="logo-wrapper">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/X_logo_2023_%28white%29.png/800px-X_logo_2023_%28white%29.png" alt="X Logo">
+                    </div>
+                    <div class="platform-name">X (Twitter)</div>
+                </a>
+                <a href="https://www.tiktok.com/@7s4?_t=ZS-8xMCTKjZGxE&_r=1" target="_blank" class="logo-card tiktok-card">
+                    <div class="logo-wrapper">
+                        <img src="tiktok.png" alt="TikTok Logo">
+                    </div>
+                    <div class="platform-name">TikTok</div>
+                </a>
+                <a href="https://t.me/ENDUP1" target="_blank" class="logo-card telegram-card">
+                    <div class="logo-wrapper">
+                        <img src="https://img.icons8.com/m_outlined/512/FFFFFF/telegram-app.png" alt="Telegram Logo">
+                    </div>
+                    <div class="platform-name">Telegram</div>
+                </a>
             </div>
-            <div class="platform-name">TikTok</div>
-        </div>
-        <div class="logo-card telegram-card">
-            <div class="logo-wrapper">
-                <img src="https://img.icons8.com/m_outlined/512/FFFFFF/telegram-app.png" alt="Telegram Logo">
+            <div class="glass-card">
+                <a href="https://snapchat.com/t/9LnEKbiO" target="_blank" class="logo-card snapchat-card">
+                    <div class="logo-wrapper">
+                        <img src="https://i.ibb.co/gv5zVKh/sm-5af2d4ca1b4fa-removebg-preview.png" alt="Snapchat Logo">
+                    </div>
+                    <div class="platform-name">Snapchat</div>
+                </a>
+                <a href="https://www.linkedin.com/in/mohammed-hissyin-aon-al-abeah-69ab0a35a" target="_blank" class="logo-card linkedin-card">
+                    <div class="logo-wrapper">
+                        <img src="https://i.ibb.co/KhQfG02/images-removebg-preview.png" alt="LinkedIn Logo">
+                    </div>
+                    <div class="platform-name">LinkedIn</div>
+                </a>
+                <a href="https://discord.gg/UGSFeT3h5f" target="_blank" class="logo-card discord-card">
+                    <div class="logo-wrapper">
+                        <img src="https://img.icons8.com/ios11/512/FFFFFF/discord-logo.png" alt="Discord Logo">
+                    </div>
+                    <div class="platform-name">Discord</div>
+                </a>
+                <a href="https://youtube.com/@endup_?si=J2lbZHqQehM_JQZC" target="_blank" class="logo-card youtube-card">
+                    <div class="logo-wrapper">
+                        <img src="youtube.png" alt="YouTube Logo">
+                    </div>
+                    <div class="platform-name">YouTube</div>
+                </a>
             </div>
-            <div class="platform-name">Telegram</div>
-        </div>
-        <div class="logo-card snapchat-card">
-            <div class="logo-wrapper">
-                <img class="snapchat-logo" src="https://i.ibb.co/gv5zVKh/sm-5af2d4ca1b4fa-removebg-preview.png" alt="Snapchat Logo">
-            </div>
-            <div class="platform-name">Snapchat</div>
-        </div>
-        <div class="logo-card linkedin-card">
-            <div class="logo-wrapper">
-                <img src="https://i.ibb.co/KhQfG02/images-removebg-preview.png" alt="LinkedIn Logo">
-            </div>
-            <div class="platform-name">LinkedIn</div>
-        </div>
-        <div class="logo-card discord-card">
-            <div class="logo-wrapper">
-                <img src="https://img.icons8.com/ios11/512/FFFFFF/discord-logo.png" alt="Discord Logo">
-            </div>
-            <div class="platform-name">Discord</div>
-        </div>
-        <div class="logo-card youtube-card">
-            <div class="logo-wrapper">
-                <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/youtube-app-white-icon.png" alt="YouTube Logo">
-            </div>
-            <div class="platform-name">YouTube</div>
         </div>
     </div>
+    <div class="modal" id="cvModal">
+        <div class="modal-content glass-card">
+            <p>We are working on it.</p>
+            <div class="modal-buttons">
+                <button class="submit-btn" onclick="closeCVMessage()">Close</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Particle animation
+        const particlesContainer = document.getElementById('particles');
+        const particleCount = 20;
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            particle.style.width = `${Math.random() * 4 + 2}px`;
+            particle.style.height = particle.style.width;
+            particle.style.left = `${Math.random() * 100}%`;
+            particle.style.top = `${Math.random() * 100}%`;
+            particle.style.animationDelay = `${Math.random() * 5}s`;
+            particlesContainer.appendChild(particle);
+        }
+
+        // Scroll indicator
+        window.addEventListener('scroll', () => {
+            const winScroll = document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.querySelector('.scroll-indicator').style.transform = `scaleX(${scrolled / 100})`;
+        });
+
+        // CV Modal functions
+        function showCVMessage() {
+            document.getElementById('cvModal').style.display = 'flex';
+        }
+        function closeCVMessage() {
+            document.getElementById('cvModal').style.display = 'none';
+        }
+    </script>
 </body>
 </html>
