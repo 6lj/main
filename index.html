@@ -2,9 +2,38 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
     <title>Welcome</title>
     <link rel="stylesheet" href="styles4.css">
+    <style>
+        .lang-toggle {
+            margin-top: 10px; 
+        }
+        body {
+            width: 100%;
+            margin: 0;
+            overflow-x: auto;
+            -webkit-text-size-adjust: none;
+            touch-action: pan-x pan-y;
+            min-height: 100vh;
+            font-size: 16px; 
+        }
+        .container {
+            width: 100%;
+            max-width: 1024px; 
+            margin: 0 auto;
+        }
+        @media only screen and (max-width: 1024px) {
+            body {
+                transform: scale(0.8); 
+                transform-origin: top left;
+            }
+            .container {
+                width: 100%;
+                padding: 0 10px; 
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="particles" id="particles"></div>
@@ -84,7 +113,7 @@
         </div>
     </div>
     <script>
-        // Particle animation
+
         const particlesContainer = document.getElementById('particles');
         const particleCount = 20;
         for (let i = 0; i < particleCount; i++) {
@@ -98,7 +127,6 @@
             particlesContainer.appendChild(particle);
         }
 
-        // Scroll indicator
         window.addEventListener('scroll', () => {
             const winScroll = document.documentElement.scrollTop;
             const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -106,13 +134,18 @@
             document.querySelector('.scroll-indicator').style.transform = `scaleX(${scrolled / 100})`;
         });
 
-        // CV Modal functions
         function showCVMessage() {
             document.getElementById('cvModal').style.display = 'flex';
         }
         function closeCVMessage() {
             document.getElementById('cvModal').style.display = 'none';
         }
+
+        document.addEventListener('touchstart', function(event) {
+            if (event.touches.length > 1) {
+                event.preventDefault();
+            }
+        }, { passive: false });
     </script>
 </body>
 </html>
