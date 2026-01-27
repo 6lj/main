@@ -157,7 +157,8 @@ body {
     color: var(--text-primary);
 }
 
-.instagram-card { background-color: #000000; }
+.instagram-card { background-color: #000000; color: white; }
+.instagram-card .platform-name { color: white !important; }
 .x-card { background-color: #333333; }
 .tiktok-card { background-color: #666666; }
 .telegram-card { background-color: #999999; }
