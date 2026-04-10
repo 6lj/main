@@ -160,7 +160,7 @@
         </div>
 
         <footer>
-            Any payload containing the transfer link will be accepted as correct
+            By Abyah
         </footer>
     </div>
 
@@ -191,8 +191,7 @@
             
             const lowerPayload = payload.toLowerCase();
             
-            // أي إجابة تحتوي على الرابط = صحيحة
-            if (lowerPayload.includes("https://bank.example.com/transfer?amount=1000&to=hacker@evil.com")) {
+  if (lowerPayload.includes("https://bank.example.com/transfer?amount=1000&to=hacker@evil.com")) {
                 resultBox.innerHTML = `
                     SUCCESS!<br><br>
                     The payload is correct.<br>
