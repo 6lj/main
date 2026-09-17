@@ -36,6 +36,22 @@
             touch-action: manipulation;
             -webkit-tap-highlight-color: transparent;
         }
+        @keyframes slowThemeShift {
+            0% { background-color: #111111; }
+            16% { background-color: #1a365d; }
+            33% { background-color: #234e52; }
+            50% { background-color: #44337a; }
+            66% { background-color: #742a2a; }
+            83% { background-color: #22543d; }
+            100% { background-color: #111111; }
+        }
+        a.social-link,
+        a.logo-card {
+            animation: slowThemeShift 120s ease-in-out infinite;
+        }
+        a.logo-card .platform-name {
+            color: #ffffff !important;
+        }
         .modal {
             padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         }
@@ -52,6 +68,10 @@
                 animation: none !important;
                 opacity: 1 !important;
                 transform: none !important;
+            }
+            a.social-link,
+            a.logo-card {
+                animation: none !important;
             }
         }
     </style>
@@ -121,7 +141,7 @@
                     </div>
                     <div class="platform-name">Instagram</div>
                 </a>
-                <a href="https://www.tiktok.com/@7s4?_t=ZS-8xMCTKjZGxE&_r=1" target="_blank" rel="noopener noreferrer" class="logo-card tiktok-card">
+                <a href="https://www.tiktok.com/@d7dd" target="_blank" rel="noopener noreferrer" class="logo-card tiktok-card">
                     <div class="logo-wrapper">
                         <img src="tiktok.png" alt="TikTok" width="80" height="80">
                     </div>
