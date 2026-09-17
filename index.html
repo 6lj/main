@@ -2,35 +2,56 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=0.5">
-    <title>Welcome</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="color-scheme" content="light">
+    <meta name="format-detection" content="telephone=no">
+    <title>Mohammed Al-Abyah</title>
     <link rel="stylesheet" href="styles4.css">
     <style>
-        .lang-toggle {
-            margin-top: 10px; 
+        html {
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
         }
         body {
             width: 100%;
             margin: 0;
-            overflow-x: auto;
-            -webkit-text-size-adjust: none;
-            touch-action: pan-x pan-y;
+            overflow-x: hidden;
             min-height: 100vh;
-            font-size: 16px; 
+            min-height: 100dvh;
+            padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         }
         .container {
             width: 100%;
-            max-width: 1024px; 
+            max-width: 1400px;
             margin: 0 auto;
         }
-        @media only screen and (max-width: 1024px) {
-            body {
-                transform: scale(0.8); 
-                transform-origin: top left;
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        .social-link,
+        .logo-card,
+        .submit-btn {
+            min-height: 44px;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .modal {
+            padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        }
+        @media (hover: none) {
+            .glass-card:hover,
+            .logo-card:hover,
+            .social-link:hover {
+                transform: none;
             }
-            .container {
-                width: 100%;
-                padding: 0 10px; 
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .glass-card,
+            .header {
+                animation: none !important;
+                opacity: 1 !important;
+                transform: none !important;
             }
         }
     </style>
@@ -45,62 +66,62 @@
         </div>
         <div class="main-grid">
             <div class="glass-card social-links">
-                <a href="https://gameguardian.net/forum/profile/1301541-endup/" target="_blank" class="social-link gameguardian">Game Guardian (LUA) </a>
-                <a href="https://iosgods.com/profile/3009815-endup/" target="_blank" class="social-link iosgods">iOSGods(Obj-C) </a>
-                <a href="https://github.com/6lj" target="_blank" class="social-link github">GitHub</a>
-                 <a href="https://cyberdefenders.org/p/ENDUPxABYAH/" target="_blank" class="social-link github">Cyberdefenders</a>
-                  <a href="https://tryhackme.com/p/DevENDUP" target="_blank" class="social-link github">TryHackMe</a>
-                  <a href="https://q5.qa/watch" target="_blank" class="social-link cv">Self-Introduction Video</a>
-                <a href="https://cv.q5.qa/" target="_blank" class="social-link cv">CV</a>
+                <a href="https://gameguardian.net/forum/profile/1301541-endup/" target="_blank" rel="noopener noreferrer" class="social-link gameguardian">Game Guardian (LUA)</a>
+                <a href="https://iosgods.com/profile/3009815-endup/" target="_blank" rel="noopener noreferrer" class="social-link iosgods">iOSGods(Obj-C)</a>
+                <a href="https://github.com/6lj" target="_blank" rel="noopener noreferrer" class="social-link github">GitHub</a>
+                <a href="https://cyberdefenders.org/p/ENDUPxABYAH/" target="_blank" rel="noopener noreferrer" class="social-link github">Cyberdefenders</a>
+                <a href="https://tryhackme.com/p/DevENDUP" target="_blank" rel="noopener noreferrer" class="social-link github">TryHackMe</a>
+                <a href="/watch" class="social-link cv">Self-Introduction Video</a>
+                <a href="https://cv.q5.qa/" target="_blank" rel="noopener noreferrer" class="social-link cv">CV</a>
             </div>
             <div class="glass-card">
-                <a href="https://discord.gg/UGSFeT3h5f" target="_blank" class="logo-card discord-card">
+                <a href="https://discord.gg/UGSFeT3h5f" target="_blank" rel="noopener noreferrer" class="logo-card discord-card">
                     <div class="logo-wrapper">
-                        <img src="https://img.icons8.com/ios11/512/FFFFFF/discord-logo.png" alt="Discord Logo">
+                        <img src="https://img.icons8.com/ios11/512/FFFFFF/discord-logo.png" alt="Discord" width="80" height="80">
                     </div>
                     <div class="platform-name">Discord</div>
                 </a>
-                <a href="https://www.linkedin.com/in/mohammed-al-abyah-a85887238/" target="_blank" class="logo-card linkedin-card">
+                <a href="https://www.linkedin.com/in/mohammed-al-abyah-a85887238/" target="_blank" rel="noopener noreferrer" class="logo-card linkedin-card">
                     <div class="logo-wrapper">
-                        <img src="https://i.ibb.co/KhQfG02/images-removebg-preview.png" alt="LinkedIn Logo">
+                        <img src="https://i.ibb.co/KhQfG02/images-removebg-preview.png" alt="LinkedIn" width="80" height="80">
                     </div>
                     <div class="platform-name">LinkedIn</div>
                 </a>
-                <a href="https://x.com/m4ua" target="_blank" class="logo-card x-card">
+                <a href="https://x.com/m4ua" target="_blank" rel="noopener noreferrer" class="logo-card x-card">
                     <div class="logo-wrapper">
-                        <img src="https://logos-marques.com/wp-content/uploads/2025/04/X-Logo.png" alt="X Logo">
+                        <img src="https://logos-marques.com/wp-content/uploads/2025/04/X-Logo.png" alt="X" width="80" height="80">
                     </div>
                     <div class="platform-name">X (Twitter)</div>
                 </a>
-                <a href="https://t.me/ENDUP1" target="_blank" class="logo-card telegram-card">
+                <a href="https://t.me/ENDUP1" target="_blank" rel="noopener noreferrer" class="logo-card telegram-card">
                     <div class="logo-wrapper">
-                        <img src="https://img.icons8.com/m_outlined/512/FFFFFF/telegram-app.png" alt="Telegram Logo">
+                        <img src="https://img.icons8.com/m_outlined/512/FFFFFF/telegram-app.png" alt="Telegram" width="80" height="80">
                     </div>
                     <div class="platform-name">Telegram</div>
                 </a>
             </div>
             <div class="glass-card">
-                <a href="https://snapchat.com/t/Y3x8NBQK" target="_blank" class="logo-card snapchat-card">
+                <a href="https://snapchat.com/t/Y3x8NBQK" target="_blank" rel="noopener noreferrer" class="logo-card snapchat-card">
                     <div class="logo-wrapper">
-                        <img src="https://i.ibb.co/gv5zVKh/sm-5af2d4ca1b4fa-removebg-preview.png" alt="Snapchat Logo">
+                        <img src="https://i.ibb.co/gv5zVKh/sm-5af2d4ca1b4fa-removebg-preview.png" alt="Snapchat" width="80" height="80">
                     </div>
                     <div class="platform-name">Snapchat</div>
                 </a>
-                <a href="https://youtube.com/@endup_?si=J2lbZHqQehM_JQZC" target="_blank" class="logo-card youtube-card">
+                <a href="https://youtube.com/@endup_?si=J2lbZHqQehM_JQZC" target="_blank" rel="noopener noreferrer" class="logo-card youtube-card">
                     <div class="logo-wrapper">
-                        <img src="youtube.png" alt="YouTube Logo">
+                        <img src="youtube.png" alt="YouTube" width="80" height="80">
                     </div>
                     <div class="platform-name">YouTube</div>
                 </a>
-                <a href="https://www.instagram.com/ry3c?igsh=ZjZybjg3bWt3dWw3&utm_source=qr" target="_blank" class="logo-card instagram-card">
+                <a href="https://www.instagram.com/ry3c?igsh=ZjZybjg3bWt3dWw3&utm_source=qr" target="_blank" rel="noopener noreferrer" class="logo-card instagram-card">
                     <div class="logo-wrapper">
-                        <img src="https://img.icons8.com/m_outlined/512/FFFFFF/instagram-new.png" alt="Instagram Logo">
+                        <img src="https://img.icons8.com/m_outlined/512/FFFFFF/instagram-new.png" alt="Instagram" width="80" height="80">
                     </div>
                     <div class="platform-name">Instagram</div>
                 </a>
-                <a href="https://www.tiktok.com/@7s4?_t=ZS-8xMCTKjZGxE&_r=1" target="_blank" class="logo-card tiktok-card">
+                <a href="https://www.tiktok.com/@7s4?_t=ZS-8xMCTKjZGxE&_r=1" target="_blank" rel="noopener noreferrer" class="logo-card tiktok-card">
                     <div class="logo-wrapper">
-                        <img src="tiktok.png" alt="TikTok Logo">
+                        <img src="tiktok.png" alt="TikTok" width="80" height="80">
                     </div>
                     <div class="platform-name">TikTok</div>
                 </a>
@@ -111,44 +132,41 @@
         <div class="modal-content glass-card">
             <p>We are working on it.</p>
             <div class="modal-buttons">
-                <button class="submit-btn" onclick="closeCVMessage()">Close</button>
+                <button class="submit-btn" type="button" onclick="closeCVMessage()">Close</button>
             </div>
         </div>
     </div>
     <script>
-
-        const particlesContainer = document.getElementById('particles');
-        const particleCount = 20;
-        for (let i = 0; i < particleCount; i++) {
-            const particle = document.createElement('div');
-            particle.classList.add('particle');
-            particle.style.width = `${Math.random() * 4 + 2}px`;
-            particle.style.height = particle.style.width;
-            particle.style.left = `${Math.random() * 100}%`;
-            particle.style.top = `${Math.random() * 100}%`;
-            particle.style.animationDelay = `${Math.random() * 5}s`;
-            particlesContainer.appendChild(particle);
+        var particlesContainer = document.getElementById("particles");
+        if (particlesContainer && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            for (var i = 0; i < 20; i++) {
+                var particle = document.createElement("div");
+                particle.className = "particle";
+                var size = Math.random() * 4 + 2;
+                particle.style.width = size + "px";
+                particle.style.height = size + "px";
+                particle.style.left = Math.random() * 100 + "%";
+                particle.style.top = Math.random() * 100 + "%";
+                particle.style.animationDelay = Math.random() * 5 + "s";
+                particlesContainer.appendChild(particle);
+            }
         }
 
-        window.addEventListener('scroll', () => {
-            const winScroll = document.documentElement.scrollTop;
-            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (winScroll / height) * 100;
-            document.querySelector('.scroll-indicator').style.transform = `scaleX(${scrolled / 100})`;
-        });
+        var scrollIndicator = document.querySelector(".scroll-indicator");
+        window.addEventListener("scroll", function () {
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = height > 0 ? document.documentElement.scrollTop / height : 0;
+            if (scrollIndicator) {
+                scrollIndicator.style.transform = "scaleX(" + scrolled + ")";
+            }
+        }, { passive: true });
 
         function showCVMessage() {
-            document.getElementById('cvModal').style.display = 'flex';
+            document.getElementById("cvModal").style.display = "flex";
         }
         function closeCVMessage() {
-            document.getElementById('cvModal').style.display = 'none';
+            document.getElementById("cvModal").style.display = "none";
         }
-
-        document.addEventListener('touchstart', function(event) {
-            if (event.touches.length > 1) {
-                event.preventDefault();
-            }
-        }, { passive: false });
     </script>
 </body>
 </html>
