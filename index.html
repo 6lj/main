@@ -31,23 +31,124 @@
         }
         .social-link,
         .logo-card,
-        .submit-btn {
+        .submit-btn,
+        .mobile-menu-btn,
+        .mobile-menu a {
             min-height: 44px;
             touch-action: manipulation;
             -webkit-tap-highlight-color: transparent;
         }
+        .mobile-nav {
+            display: none;
+        }
+        @media (max-width: 1024px) {
+            html {
+                scroll-padding-top: 72px;
+            }
+            #options,
+            #platforms,
+            #top {
+                scroll-margin-top: 72px;
+            }
+            .mobile-nav {
+                display: block;
+                position: sticky;
+                top: 0;
+                z-index: 1100;
+                margin: 0;
+                padding: 8px 15px 10px;
+                background: #ffffff;
+                border-bottom: 1px solid #e5e5e5;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+            .mobile-nav-bar {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 12px;
+                min-height: 44px;
+            }
+            .mobile-nav-brand {
+                color: #000000;
+                text-decoration: none;
+                font-weight: 700;
+                font-size: 1rem;
+                line-height: 1.2;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .mobile-menu-btn {
+                width: 44px;
+                height: 44px;
+                flex-shrink: 0;
+                border: 1px solid #e5e5e5;
+                border-radius: 12px;
+                background: #1e4a8c;
+                display: inline-flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 5px;
+                cursor: pointer;
+            }
+            .mobile-menu-btn span {
+                display: block;
+                width: 18px;
+                height: 2px;
+                background: #ffffff;
+                border-radius: 2px;
+                transition: transform 0.25s ease, opacity 0.25s ease;
+            }
+            .mobile-nav.is-open .mobile-menu-btn span:nth-child(1) {
+                transform: translateY(7px) rotate(45deg);
+            }
+            .mobile-nav.is-open .mobile-menu-btn span:nth-child(2) {
+                opacity: 0;
+            }
+            .mobile-nav.is-open .mobile-menu-btn span:nth-child(3) {
+                transform: translateY(-7px) rotate(-45deg);
+            }
+            .mobile-menu {
+                display: none;
+                margin-top: 10px;
+                padding: 4px 0 6px;
+            }
+            .mobile-nav.is-open .mobile-menu {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+            }
+            .mobile-menu a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-decoration: none;
+                font-weight: 500;
+                color: #ffffff;
+                background: #1e4a8c;
+                border-radius: 25px;
+                padding: 10px 16px;
+            }
+            .container > .header {
+                margin-bottom: 24px;
+            }
+        }
         @keyframes slowThemeShift {
-            0% { background-color: #111111; }
+            0% { background-color: #1e4a8c; }
             16% { background-color: #1a365d; }
             33% { background-color: #234e52; }
             50% { background-color: #44337a; }
             66% { background-color: #742a2a; }
             83% { background-color: #22543d; }
-            100% { background-color: #111111; }
+            100% { background-color: #1e4a8c; }
         }
         a.social-link,
-        a.logo-card {
-            animation: slowThemeShift 120s ease-in-out infinite;
+        a.logo-card,
+        .mobile-menu-btn,
+        .mobile-menu a {
+            background-color: #1e4a8c;
+            animation: slowThemeShift 75s ease-in-out infinite;
         }
         a.logo-card .platform-name {
             color: #ffffff !important;
@@ -70,7 +171,9 @@
                 transform: none !important;
             }
             a.social-link,
-            a.logo-card {
+            a.logo-card,
+            .mobile-menu-btn,
+            .mobile-menu a {
                 animation: none !important;
             }
         }
@@ -79,15 +182,35 @@
 <body>
     <div class="particles" id="particles"></div>
     <div class="scroll-indicator"></div>
+    <header class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-bar">
+            <a href="#top" class="mobile-nav-brand">Mohammed Al-Abyah</a>
+            <button type="button" class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <nav class="mobile-menu" id="mobileMenu">
+            <a href="#top">Home</a>
+            <a href="#options">Options</a>
+            <a href="#platforms">Platforms</a>
+            <a href="/watch">Video</a>
+            <a href="mailto:dev@q5.qa">dev@q5.qa</a>
+            <a href="tel:+966570676678">+966 57 067 6678</a>
+        </nav>
+    </header>
     <div class="container">
-        <div class="header">
+        <div class="header" id="top">
             <h1 class="main-title">Welcome!</h1>
             <h2 class="subtitle"></h2>
         </div>
         <div class="main-grid">
-            <div class="glass-card social-links">
+            <div class="glass-card social-links" id="options">
                 <a href="https://portfolio.q5.qa/" target="_blank" rel="noopener noreferrer" class="social-link cv">Portfolio</a>
-                <a href="https://q5.qa/cycv.pdf" download="Mohamed-AlAbiya-CV.pdf" class="social-link cv">Download CV</a>
+                <a href="/cycv.pdf" download="Mohamed-AlAbiya-CV.pdf" class="social-link cv js-download-cv">Download CV</a>
+                <a href="mailto:dev@q5.qa" class="social-link cv">dev@q5.qa</a>
+                <a href="tel:+966570676678" class="social-link cv">+966 57 067 6678</a>
                 <a href="https://cv.q5.qa/" target="_blank" rel="noopener noreferrer" class="social-link cv">Arabic CV page</a>
                 <a href="https://gameguardian.net/forum/profile/1301541-endup/" target="_blank" rel="noopener noreferrer" class="social-link gameguardian">Game Guardian (LUA)</a>
                 <a href="https://iosgods.com/profile/3009815-endup/" target="_blank" rel="noopener noreferrer" class="social-link iosgods">iOSGods(Obj-C)</a>
@@ -96,7 +219,7 @@
                 <a href="https://tryhackme.com/p/DevENDUP" target="_blank" rel="noopener noreferrer" class="social-link github">TryHackMe</a>
                 <a href="/watch" class="social-link cv">Self-Introduction Video</a>
             </div>
-            <div class="glass-card">
+            <div class="glass-card" id="platforms">
                 <a href="https://discord.gg/UGSFeT3h5f" target="_blank" rel="noopener noreferrer" class="logo-card discord-card">
                     <div class="logo-wrapper">
                         <img src="https://img.icons8.com/ios11/512/FFFFFF/discord-logo.png" alt="Discord" width="80" height="80">
@@ -174,6 +297,87 @@
                 scrollIndicator.style.transform = "scaleX(" + scrolled + ")";
             }
         }, { passive: true });
+
+        var mobileNav = document.getElementById("mobileNav");
+        var mobileMenuBtn = document.getElementById("mobileMenuBtn");
+        var mobileMenu = document.getElementById("mobileMenu");
+        function setMobileMenu(open) {
+            if (!mobileNav || !mobileMenuBtn) return;
+            mobileNav.classList.toggle("is-open", open);
+            mobileMenuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+            mobileMenuBtn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+        }
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener("click", function () {
+                setMobileMenu(!mobileNav.classList.contains("is-open"));
+            });
+        }
+        if (mobileMenu) {
+            mobileMenu.addEventListener("click", function (event) {
+                if (event.target.tagName === "A") {
+                    setMobileMenu(false);
+                }
+            });
+        }
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "Escape") {
+                setMobileMenu(false);
+            }
+        });
+        window.addEventListener("resize", function () {
+            if (window.matchMedia("(min-width: 1025px)").matches) {
+                setMobileMenu(false);
+            }
+        });
+
+        function downloadCv(event) {
+            event.preventDefault();
+            var link = event.currentTarget;
+            if (link.getAttribute("data-busy") === "1") return;
+            var url = link.getAttribute("href") || "/cycv.pdf";
+            var filename = link.getAttribute("download") || "Mohamed-AlAbiya-CV.pdf";
+            link.setAttribute("data-busy", "1");
+            fetch(url, { credentials: "same-origin" })
+                .then(function (response) {
+                    if (!response.ok) throw new Error("Download failed");
+                    return response.blob();
+                })
+                .then(function (blob) {
+                    var objectUrl = URL.createObjectURL(blob);
+                    var temp = document.createElement("a");
+                    temp.href = objectUrl;
+                    temp.download = filename;
+                    document.body.appendChild(temp);
+                    temp.click();
+                    temp.remove();
+                    setTimeout(function () { URL.revokeObjectURL(objectUrl); }, 1000);
+                })
+                .catch(function () {
+                    fetch("https://q5.qa/cycv.pdf")
+                        .then(function (response) {
+                            if (!response.ok) throw new Error("Download failed");
+                            return response.blob();
+                        })
+                        .then(function (blob) {
+                            var objectUrl = URL.createObjectURL(blob);
+                            var temp = document.createElement("a");
+                            temp.href = objectUrl;
+                            temp.download = filename;
+                            document.body.appendChild(temp);
+                            temp.click();
+                            temp.remove();
+                            setTimeout(function () { URL.revokeObjectURL(objectUrl); }, 1000);
+                        })
+                        .catch(function () {});
+                })
+                .then(function () {
+                    link.setAttribute("data-busy", "0");
+                });
+        }
+        var cvLinks = document.querySelectorAll(".js-download-cv");
+        for (var c = 0; c < cvLinks.length; c++) {
+            cvLinks[c].addEventListener("click", downloadCv);
+        }
 
     </script>
 </body>
