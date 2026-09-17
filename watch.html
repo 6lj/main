@@ -116,11 +116,44 @@
                 <h1>Mohammed Al-Abyah</h1>
                 <p>Introduction video. Press play to watch.</p>
                 <div class="actions">
-                    <a class="btn primary" href="https://q5.qa/video.mp4">Download video</a>
+                    <a class="btn primary" id="download-video" href="https://q5.qa/video.mp4" download="video.mp4">Download video</a>
                     <a class="btn ghost" href="https://q5.qa/">Back to website</a>
                 </div>
             </div>
         </article>
     </main>
+    <script>
+        const downloadBtn = document.getElementById("download-video");
+        const videoUrl = "https://q5.qa/video.mp4";
+
+        downloadBtn.addEventListener("click", async (event) => {
+            event.preventDefault();
+            if (downloadBtn.dataset.busy === "1") return;
+
+            const originalText = downloadBtn.textContent;
+            downloadBtn.dataset.busy = "1";
+            downloadBtn.textContent = "Downloading...";
+
+            try {
+                const response = await fetch(videoUrl);
+                if (!response.ok) throw new Error("Download failed");
+
+                const blob = await response.blob();
+                const objectUrl = URL.createObjectURL(blob);
+                const link = document.createElement("a");
+                link.href = objectUrl;
+                link.download = "video.mp4";
+                document.body.appendChild(link);
+                link.click();
+                link.remove();
+                URL.revokeObjectURL(objectUrl);
+            } catch (error) {
+                window.location.href = videoUrl;
+            } finally {
+                downloadBtn.dataset.busy = "0";
+                downloadBtn.textContent = originalText;
+            }
+        });
+    </script>
 </body>
 </html>
